@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx,wasysym, mdframed,xcolor,gensymb,verbatim}
+\usepackage{color}
+\usepackage{floatflt}
+\usepackage[italian]{babel}
+
+\newcommand{\voto}[1]{[\textbf{#1} punti]}
+\def\cmu{\mbox{cm$^{-1}$}}
+\def\half{\frac{1}{2}}
+
+\voffset -2cm
+\hoffset -2.5cm
+%\marginparwidth 0cm
+\textheight 22cm
+\textwidth 17cm
+%\oddsidemargin  0.2cm                                                                                         
+%\evensidemargin 0.4cm                                                                                         
+\parindent 0pt
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+{\large \bf  Laboratorio di Calcolo per Fisici, Informazioni Utili\\[2mm]}
+\end{center}
+
+{\bf User-ID:} \texttt{lcblxx}, dove $xx$ \`e il numero del gruppo a cui siete stati assegnati.
+\\
+{\bf Pagina web del corso (esercitazioni):}
+  ({\em https://lboeri.wordpress.com/teaching/labcalc/ex/})
+\\
+{\bf Pagina web con le home directory}:{\em  http://labcalc.fisica.uniroma1.it/studenti/}.
+\vspace{2mm}
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Comandi UNIX di base}
+\begin{itemize}
+\item Per creare una cartella: \texttt{mkdir nomecartella}.
+\item Per entrare in una cartella: \texttt{cd nomecartella}.
+\item Per uscire da una cartella: \texttt{cd ..}. Per tornare nella vostra
+  {\em home directory} (cartella home) \`e sufficiente digitare \texttt{cd}.
+\item Per vedere il contenuto di una cartella: \texttt{ls}.
+\item Per copiare il contenuto di un file ({\em file1}) in un secondo file
+  ({\em file2}): \texttt{cp file1 file2}.
+\item Per rinominare un file da {\em old} a {\em new}: \texttt{mv old new}.
+\item Per spostare o copiare un file in una cartella diversa si usano i comandi \texttt{mv} e \texttt{cp}, es: \texttt{mv file1 cartella} o  \texttt{cp file1 cartella}. Per copiare/spostare {\em tutti} i file \texttt{cp *}/ \texttt{mv *}.
+\item Per cancellare (rimuovere) un file: \texttt{rm file}.
+\item Per rimuovere una cartella (vuota):  \texttt{rmdir nomecartella}.
+ \item Per avere informazioni su di un comando specifico si usa il comando
+  \texttt{man}, es:  \texttt{man ls} fornisce tutte le indicazioni sul funzionamento del comando \texttt{ls} e le opzioni possibili.
+\end{itemize}
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Altri Comandi utili}
+\begin{itemize}
+\item Per aprire (lanciare) l'editor di testo: \texttt{emacs nomefile}.
+\item Per aprire (lanciare) l'editor di testo in modalit\`a {\em background}
+  \texttt{emacs nomefile \&}.
+\item Per {\em compilare} un programma scritto in C:
+  \texttt{gcc programma.c -o programma.x} 
+\item Per {\em eseguire} un programma compilato:
+  \texttt{./programma.x}
+\item Per {\em eseguire} un programma compilato in modalit\`a {\em background} (utile in seguito):
+  \texttt{./programma.x \&}
+  \item Per vedere quali programmi sono in esecuzione (utile in seguito): \texttt{top}.
+\item Per eseguire un programma compilato e ridirigere l'output su un file esterno {\em output} (utile in seguito) \texttt{./programma.x > output} 
+\item Per lanciare il programma {\em gnuplot} (programma per fare i grafici):
+  \texttt{gnuplot}. Per uscire digitare \texttt{exit}.
+\item Per accedere all'help generale di {\em gnuplot} digitare  \texttt{help}.
+  Per avere informazioni su un comando specifico digitare \texttt{help nomecomando}.
+\end{itemize}
+
+
+
+
+\end{document}

@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx,wasysym, mdframed,xcolor,gensymb,verbatim}
+\usepackage{color}
+\usepackage{floatflt}
+\usepackage[italian]{babel}
+
+\def\cmu{\mbox{cm$^{-1}$}}
+\def\half{\frac{1}{2}}
+
+\voffset -2cm
+\hoffset -2.5cm
+%\marginparwidth 0cm
+\textheight 22cm
+\textwidth 17cm
+%\oddsidemargin  0.2cm                                                                                         
+%\evensidemargin 0.4cm                                                                                         
+\parindent 0pt
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+{\Large \bf  Laboratorio di Calcolo per Fisici, Quarta esercitazione\\[2mm]}
+{\large Canale Pb-Z, Docente: Lilia Boeri}
+\end{center}
+\vspace{4mm}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+  Lo scopo della quarta esercitazione di laboratorio \`e di fare pratica con
+le istruzioni di controllo di flusso \texttt{if... (then) ... else}; \texttt{while ... do} e le funzioni di generazione di numeri casuali ({\em random}), scrivendo un programma che simula il gioco della roulette.
+  \end{mdframed}
+%\vspace{1mm}
+%
+%
+
+
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Prima parte:}
+
+Scrivere un programma \texttt{lancio.c} che, utilizzando opportunamente le
+funzioni di generazione di numeri casuali, simuli una mano di una partita di
+roulette (lancio e risultato). Il programma deve: 
+\begin{enumerate}
+\item Generare un numero casuale $X$ compreso tra 1 e 36. 
+\item Riconoscere se il numero generato $X$ \`e pari (E) o dispari (O), minore
+o uguale di 18 (M) o maggiore di 19 (P).  
+\item Stampare il risultato nel formato: \texttt{$X$ E/O M/P}. 
+\end{enumerate}
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Seconda parte:}
+Partendo dal programma precedente, scrivere un programma chiamato \texttt{roulette.c} che
+invece che un singolo lancio simuli pi\`u lanci --  ($N \ge 100$).  
+\begin{enumerate}
+\item Alla fine degli $N$ lanci, stampare sullo schermo la {\em frequenza}
+con cui si \`e verificato ciascun risultato (E/O/M/P): la frequenza
+\`e quella attesa o si discosta dal valore aspettato? Verificare come
+varia la frequenza al variare del parametro $N$ - numero di lanci. 
+\item Costruire un {\em array} di 36 elementi che contenga il numero di
+volte in cui  in un lancio  si \`e verificatociascun risultato tra 1 e 36.
+\item Scrivere il contenuto dell'array su di un file
+  \texttt{isto.dat} che contenga
+su due colonne i numeri da uno a 36 ({\em bin}) e le relative occorrenze.
+Questi dati serviranno per costruire un {\em istogramma} dei risultati.
+Il file pu\`o essere creato a mano, o redirigendo l'output del programma
+su un file con il comando \texttt{./programma.x > fileout}.
+\end{enumerate}
+
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Terza parte}
+Far girare il programma \texttt{roulette.c} con un numero variabile di lanci,
+ed effettuare un'analisi dell'andamento dell'istogramma dei risultati.
+\begin{enumerate}
+\item Creare con \texttt{gnuplot} un istogramma della distribuzione dei lanci per un numero $N$ fissato di lanci ($N \ge 100$). Per creare un istogramma con gnuplot a partire da un file \texttt{dati.c} contenente due colonne 
+\\
+(\texttt{nome del bin  |   numero di occorrenze}) 
+\\
+si usa il comando \texttt{plot "dati.dat" with boxes}. Utilizzare l'help online per formattare corretttamente il grafico e salvarlo su un file \texttt{isto1.gif}.
+\item Generare un certo numero di file di nome \texttt{istoxx.dat} che contengano l'istogramma dei risultati generati dal programma \texttt{roulette.c}, per numeri di lanci diversi: 10, 100, 10.000, 100.000.
+ Per paragonare run con un numero diverso di lanci, invece del numero di occorrenze il file dovr\`a contenere
+la {\em frequenza} con cui si \`e verificato ciascun risultato.
+\item Formattando opportunamente il grafico, paragonate gli istogrammi ottenuti per diversi valori di $N$. Che cosa si 
+pu\`o dire sulla distribuzione dei risultati in funzione di $N$? Il risultato \`e corerente con le vostre aspettative? Se s\`i/no, perch\'e? Salvare il grafico su un nuovo file (\texttt{isto2.gif}) e scrivere le risposte sul file \texttt{risposte.txt}.
+\end{enumerate}
+
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Quarta parte (facoltativa)}
+A partire dal programma \texttt{roulette.c} creare un nuovo programma \texttt{gioco.c} che simuli una vera
+partita di roulette. 
+Una partita si svolge come segue:
+\begin{enumerate}
+\item All'inizio del gioco, il giocatore riceve una dotazione iniziale di 100 euro.
+\item A ogni mano, il giocatore e pu\`o decidere di fare una puntata  su pari o dispari, o su un numero maggiore o minore di 18 (Manque/Passe). In caso di vincita, il giocatore riceve due volte la posta per le puntate Pari/Dispari o Manque/Passe.
+\item Il gioco termina dopo un numero fissato di mani (10 o 20) o quando il giocatore esaurisce il credito a sua disposizione.
+\end{enumerate}
+
+Il vostro programma dovr\`a simulare tutte le fasi della partita; a ogni mano dovr\`a chiedere al giocatore di effettuare una puntata e verificare l'eventuale vittoria, controllare se il giocatore abbia ancora soldi a propria disposizione per giocare una nuova mano. Alla fine della partita, il programma dovr\`a stampare un messaggio riassuntivo che riporti il numero totale delle mani giocate, l'ammontare totale delle puntate, e il credito a disposizione del giocatore.
+
+
+
+\vspace{4mm}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+\textbf{$\RHD$ Generazione di numeri casuali in C:}
+ 
+Le librerie standard del C dispongono di diverse funzioni per la generazione di numeri casuali.
+La funzione \texttt{rand} di \texttt{stdlib.h} restituisce un numero intero casuale compreso tra 0 e il valore \texttt{RAND\_MAX}, che dipende dall'architettura del processore.
+
+\textbf{$\RHD$} Per generare un numero casuale {\bf compreso tra 0 e 1} bisogna dividere il risultato di \texttt{rand()} per
+\texttt{RAND\_MAX}:
+\\
+\texttt{x=(double) rand()/{RAND\_MAX}};
+\\
+(L'istruzione (double) esegue il {\em casting} (conversione) del risultato in formato \texttt{double}.
+
+\textbf{$\RHD$} Per generare un numero {\bf razionale} casuale {\bf compreso tra 0 e N} si moltiplica l'espressione precedente per N: 
+\\
+\texttt{x=(double) rand()/{RAND\_MAX}*N};
+\\
+(L'istruzione (double) esegue il {\em casting} (conversione) del risultato in formato \texttt{double}.
+
+\textbf{$\RHD$} Per generare un numero {\bf intero} casuale {\bf compreso tra 1 e N} si usa la propriet\`a della funzione 
+{\bf modulo} (\texttt{\%}):  
+\\
+\texttt{i=rand() \% N + 1};
+
+{\bf NB!} Prima di chiamare la funzione \texttt{rand} all'interno di un programma bisogna inizializzare il {\em seme} (seed) della sequenza di numeri casuali attraverso la funzione \texttt{srand(seme)}; \texttt{seme} \`e un numero intero. Due sequenze inizializzate con lo stesso seme produrranno risultati identici. Se si vuole evitare che la sequenza di numeri casuali si ripeta in modo sempre uguale, si inizializza il seme utilizzando la funzione \texttt{time} della libreria
+nativa \texttt{time.h}. Questo si ottiene inserendo all'inizio del programma, prima della chiamata della funzione \texttt{rand}, l'istruzione:
+\\
+\texttt{srand(time(NULL));}
+\\
+\end{mdframed}
+
+ 
+
+\end{document}

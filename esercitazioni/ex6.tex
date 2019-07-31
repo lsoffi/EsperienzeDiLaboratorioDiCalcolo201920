@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx,wasysym, mdframed,xcolor,gensymb,verbatim}
+\usepackage{color}
+\usepackage{floatflt}
+\usepackage[italian]{babel}
+
+\def\cmu{\mbox{cm$^{-1}$}}
+\def\half{\frac{1}{2}}
+
+\voffset -2cm
+\hoffset -2.5cm
+%\marginparwidth 0cm
+\textheight 22cm
+\textwidth 17cm
+%\oddsidemargin  0.2cm                                                                                         
+%\evensidemargin 0.4cm                                                                                         
+\parindent 0pt
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+{\Large \bf  Laboratorio di Calcolo per Fisici, Sesta esercitazione\\[2mm]}
+{\large Canale D-K, Docente: Lilia Boeri}
+\end{center}
+\vspace{4mm}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+  Lo scopo della sesta esercitazione di laboratorio \`e di fare pratica con
+le istruzioni di input/output da file e la scrittura modulare di programmi tramite funzioni.
+  \end{mdframed}
+%\vspace{1mm}
+%
+%
+
+
+
+\hrule
+\vspace{2mm}
+La distribuzione binomiale, o distribuzione di Bernoulli, \`e una distribuzione di probabilit\`a
+discreta che descrive la probabilit\`a che in $n$ esperimenti si verifichi $k$ volte un evento
+con probabilit\`a individuale $p$.
+La distribuzione \`e data da:
+\[
+P(k)=\frac{n!}{\nu! (n-k)!}p^{k}(1-p)^{n-k},
+\]
+(in questa formula $n!$ indica il {\em fattoriale} di n).
+Trattandosi di una distribuzione discreta, si ha: $\sum_{k=0}^{N} P(k)=1$ ({\em condizione di normalizzazione}).
+
+Esempi di processi descritti dalla distribuzione binomiale sono il lancio di una moneta ($p_{testa}=p_{croce}=\frac{1}{2}$), il lancio di un dado a 6 facce, l'estrazione di palline o bossoli da un'urna, l'estrazione (ripetuta) di una carta da un mazzo di carte, etc.
+
+Consideriamo per esempio il lancio di un dado a 6 facce;
+se definiamo come evento favorevole ({\em successo}) l'apparire di una determinata faccia, per esempio il numero 3,
+la probabilit\`a $p$ che si verifichi il singolo evento sar\`a $p=\frac{1}{6}$; la distribuzione binomiale descriver\`a la probabilit\`a che in $n$ lanci successivi di un singolo dado a 6 facce appaia esattamente $k$ volte la faccia con il numero 3.
+
+\vspace{2mm}
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Prima parte:}
+
+\begin{enumerate}
+\item Creare un programma \texttt{bernoulli.c} che calcoli e scriva su un file \texttt{bernoulli.dat} la
+distribuzione di Bernoulli per valori arbitrari di $n$ e $p$. Il programma dovr\`a contenere almeno
+una chiamata a una funzione esterna, che implementi la funzione fattoriale.
+\item Il file di output deve contenere, su due colonne:
+\\
+\texttt{$0 \quad \quad P(0)$}
+\\
+\texttt{$k \quad \quad P(k)$}
+\\
+\texttt{$n \quad \quad P(n)$}
+
+\item Dopo aver verificato che il programma funzioni correttamente e che la $P(k)$ soddisfi la condizione di
+normalizzazione, fissare $p=\frac{1}{6}$ e graficare con \texttt{gnuplot} la funzione $P(k)$ per i seguenti valori di $n$:
+$n=2$; $n=4$; $n=10$; $n=20$.
+Che cosa si nota all'aumentare di $n$? Perch\`e?
+Salvate i dati usati per le figure su diversi file \texttt{bernoulli\_n.dat} e i grafici su file immagine
+\texttt{bernoulli\_n.gif}.
+\end{enumerate}
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Seconda parte:}
+\vspace{2mm}
+
+Creare un secondo programma \texttt{lanci.c} che simuli l'evento descritto dalla distribuzione di Bernoulli.
+In particolare, il programma deve simulare una serie $N_{lanci}$ di lanci di $n$ dadi a 6 facce, e per
+ciascuno di questi lanci registrare il numero di volte $k$ in cui compare la faccia numero 3 del dado.
+L'istogramma delle occorrenze $k$, opportunamente rinormalizzato, tender\`a alla distribuzione di 
+Bernoulli se il numero dei lanci $N_{lanci}$ \`e sufficientemente grande.
+Il programma \texttt{lanci.c} deve:
+
+\begin{enumerate}
+\item Chiedere all'utente di inserire il numero $n$ di dadi lanciati per ciascun lancio e il numero di lanci $N_{lanci}$;
+\item Chiamare una funzione esterna che simuli il lancio di un dado a 6 facce utilizzando un generatore di numeri casuali;
+\item Costruire un istogramma che contenga il numero di successi $k$ per ciascun lancio.
+\item Riscalare opportunamente l'istogramma ottenuto al punto precedente in modo che la {\em condizione di normalizzazione} della distribuzione sia soddisfatta.
+\item Salvare su un file l'istogramma riscalato. Per il punto successivo, pu\`o essere utile aprire il file in modalit\`a aggiungi ({\em append}), in modo da non sovrascrivere i dati a ogni esecuzione del file.
+\end{enumerate}
+
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Terza parte}
+\vspace{2mm}
+
+Confrontare (graficamente) i dati generati dai due programmi per gli stessi valori di $n$ e $k$.
+Qual \`e il numero minimo di lanci da usare nel secondo programma per ottenere un campionamento ragionevole
+della distribuzione di Bernoulli? Se si esegue il secondo programma pi\`u volte per uno stesso numero di lanci
+$N_{lanci}$, come cambia la distribuzione? Che cosa si pu\`o fare per diminuire le {\em fluttuazioni} nel risultato?
+Scrivete le vostre osservazioni e risposte su un file \texttt{risposte.c}.
+
+
+
+\end{document}

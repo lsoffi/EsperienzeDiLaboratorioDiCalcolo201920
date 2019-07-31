@@ -1,0 +1,90 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx,wasysym, mdframed,xcolor,gensymb,verbatim}
+\usepackage{color}
+\usepackage{floatflt}
+\usepackage[italian]{babel}
+
+\def\cmu{\mbox{cm$^{-1}$}}
+\def\half{\frac{1}{2}}
+
+\voffset -2cm
+\hoffset -2.5cm
+%\marginparwidth 0cm
+\textheight 22cm
+\textwidth 17cm
+%\oddsidemargin  0.2cm                                                                                         
+%\evensidemargin 0.4cm                                                                                         
+\parindent 0pt
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+{\Large \bf  Laboratorio di Calcolo per Fisici,\\ Seconda Esercitazione Valutata, 11/12/2017 \\[2mm]}
+{\large Canale D-K, Docente: Lilia Boeri}
+\end{center}
+\vspace{4mm}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+Lo scopo della seconda esercitazione valutata \`e scrivere un programma che simuli il gioco della {\em morra cinese}. \\
+Per svolgere l'esercitazione avrete 3 ore; sono concessi libri di testo e appunti
+ed \`e ammesso discutere la soluzione con il proprio compagno di gruppo
+(a bassa voce), ma non con gli altri gruppi.
+\\
+{\bf L'uso di cellulari e tablet non \`e ammesso, pena l'annullamento del compito.}
+\\
+Il programma va scritto e salvato esclusivamente sul server del laboratorio,
+utilizzando lo user-id corrispondente al vostro gruppo, in una cartella
+di nome \texttt{EX9}, su un file di nome \texttt{morra.c}. Per sicurezza inserite 
+nelle prime righe del file due righe di commento contenenti il nome, cognome
+e numero di matricola dei componenti del gruppo.
+  \end{mdframed}
+%\vspace{1mm}
+%
+%
+
+
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Esercizio:}
+La morra cinese \`e un antico gioco che si svolge tra due persone come segue.
+Ciascuno dei giocatori porta la mano dietro la testa e, ritmicamente, la riporta
+rapidamente davanti a s\'e facendo un gesto convenzionale ({\em getto}). 
+I gesti possono essere di tre tipi: il pungo chiuso rappresenta un sasso, la mano aperta un foglio di carta e la mano chiusa con l'indice e il medio stesi un paio di forbici. Si confrontano i segni di ciascuno dei due giocatori e si stabilisce chi vince secondo le regole che seguono:
+\begin{itemize}
+\item Il sasso vince sulle forbici. 
+\item Le forbici vincono sulla carta.
+\item La carta vince sul sasso.
+\end{itemize}
+Due segni uguali conducono a un pareggio e s'ignorano. Vince chi, dopo un numero prestabilito di getti ottiene il maggior numero di vittorie. Simulare una partita di morra cinese nel modo che segue.
+\begin{enumerate}
+\item Il programma chiede all'utente di quanti getti sar\`a composta la partita.
+L'utente inserisce questo numero attraverso la tastiera.
+\item Il programma controlla che il numero di getti introdotto sia positivo e minore o uguale a 20.
+\item Si simula il comportamento di un giocatore attraverso una funzione che
+restituisce con uguale probabilit\`a un numero intero che rappresenta il segno
+fatto da ciascun giocatore.
+\item  A una funzione si passano i segni del giocatore A e del giocatore B. La
+funzione determina il vincitore in base alle regole sopra citate e restituisce
+un valore che permette di discriminare chi ha vinto il getto o se il getto \`e finito in parit\`a. La scelta della maniera in cui questo si ottiene \`e lasciata
+allo studente.
+\item Per ciascun getto si determina il vincitore e si aggiunge un punto al vincitore, se esiste.
+\item L'esito del singolo confronto dev'essere memorizzato, in qualche maniera,
+in un opportuno array.
+\item Al termine delle partita si decreta il vincitore e si stampa, sullo schermo,
+la sequenza dei getti. Ci sar\`a una riga per ciascun getto,
+in cui saranno riportate la scelta di ciascun giocatore ({\bf C}, {\bf F} o {\bf S}),
+e l'esito di ciascun getto (vittoria di $A$ o $B$ o pareggio).
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\end{document}

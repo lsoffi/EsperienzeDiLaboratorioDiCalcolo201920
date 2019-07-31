@@ -1,0 +1,123 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx,wasysym, mdframed,xcolor,gensymb,verbatim}
+\usepackage{color}
+\usepackage{floatflt}
+\usepackage[italian]{babel}
+
+\newcommand{\voto}[1]{[\textbf{#1} punti]}
+\def\cmu{\mbox{cm$^{-1}$}}
+\def\half{\frac{1}{2}}
+
+\voffset -2cm
+\hoffset -2.5cm
+%\marginparwidth 0cm
+\textheight 22cm
+\textwidth 17cm
+%\oddsidemargin  0.2cm                                                                                         
+%\evensidemargin 0.4cm                                                                                         
+\parindent 0pt
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+{\Large \bf  Laboratorio di Calcolo per Fisici, Prima esercitazione\\[2mm]}
+{\large Canale Pb-Z, Docente: Lilia Boeri}
+\end{center}
+\vspace{4mm}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+  Lo scopo della prima esercitazione di laboratorio \`e di introdurre gli strumenti di base che verranno usati nel corso delle successive esercitazioni:
+  la {\em shell}, l'editor di testo {\em emacs}, il compilatore {\em gcc}, e il
+  programma di grafica {\em gnuplot}.
+\\
+  Sulla pagina web del corso
+  ({\em https://lboeri.wordpress.com/teaching/labcalc/ex/})
+  sono disponibili dei tutorial pi\`u avanzati su ciascuno di questi argomenti.
+\end{mdframed}
+%\vspace{1mm}
+%
+%
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Prima parte (obbligatoria)} 
+\begin{enumerate}
+\item Effettuare il {\em login} sulla propria macchina {\em Unix} utilizzando lo {\em userid}  \texttt{lcblxx}, dove $xx$ \`e il numero del gruppo a cui siete stati assegnati.
+\item Aprire una finestra di {\em terminale}.
+\item Creare una cartella  \texttt{EX1} in cui copiare il materiale della prima esercitazione.
+\item Nella cartella \texttt{EX1} aprire con un l'editor di testo {\em emacs} il file \texttt{temp.c}, e digitare il listato sottostante. Salvare il contenuto del file.
+\item Compilare il programma in c digitando sul terminale:
+  \texttt{gcc temp.c -o temp.x}
+\item Eseguire il file {\em temp.x} digitando \texttt{./temp.x}
+\item Inserire i dati richiesti dal programma; il programma \`e un semplice convertitore di temperature da gradi Celsius a gradi Fahrenheit.
+\end{enumerate}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+  {\bf Listato del programma \texttt{temp.c}}
+  \begin{verbatim}
+  # include <stdio.h>
+int main ()
+{
+  double tc,tf,conv,offset;
+
+  conv =5./9.;
+  offset = 32.;
+  printf("Inserisci la tempeatura in gradi Celsius \n");
+  scanf("%lf",&tc);
+  tf=tc/conv+offset;
+  printf("La temperatura in gradi Fahrenheit vale %5.2f gradi\n",tf);
+}
+\end{verbatim}
+\end{mdframed}
+
+\newpage
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Seconda parte (obbligatoria)} 
+%
+\begin{enumerate}
+\item Eseguire il programma \texttt{temp.x} quattro o pi\`u volte, con valori di input diversi, e creare un file di testo chiamato \texttt{temp.dat} con due colonne,
+  che contenga i valori di input e di output - temperatura in Celsius (Tc) e
+  temperatura in Fahrenheit (Tf).
+\item Aprire il programma di grafica \texttt{gnuplot} digitando nella shell il
+  comando \texttt{gnuplot}.
+\item Graficare i dati contenuti nel file \texttt{temp.dat} con il comando
+  \texttt{plot "temp.dat" with points}.
+\item Aggiungere le legende all'asse $x$ e $y$ con i comandi:
+\\
+  \texttt{set xlabel "Tc"};
+\\
+\texttt{set ylabel "Tf"}.
+          {\em Ogni volta che si d\`a un nuovo comando a gnuplot bisogna ricordarsi di fare il refresh dello schermo con il comando \texttt{replot}.}
+  \end{enumerate}
+
+
+\hrule
+\vspace{2mm}\textbf{$\RHD$ Terza parte (facoltativa)\\}
+%
+Con il programma \texttt{gnuplot} \`e possibile graficare non solo dati contenuti in un file esterno, ma anche funzioni definite dall'utente. Per esempio,
+per plottare la funzione $y=x$ \`e sufficiente digitare: 
+\begin{mdframed}[backgroundcolor=gray!10]
+  \begin{verbatim}
+    f(x)=x
+    plot f(x)
+\end{verbatim}
+\end{mdframed}
+In questo modo vengono cancellati i dati presenti sullo schermo e viene disegnata la funzione $y=x$ in un intervallo arbitrario. Per sovrapporre una funzione a dei dati, si utilizza il comando {\em replot}.
+
+\begin{mdframed}[backgroundcolor=gray!10]
+  \begin{verbatim}
+    plot "temp.dat" with points
+    f(x)=x
+    replot f(x)
+\end{verbatim}
+\end{mdframed}
+
+\begin{enumerate}
+\item Utilizzando la funzionalit\`a appena descritta, disegnare la retta che interpola i dati generati dal programma \texttt{temp.x}.
+\item Utilizzando l'{\em help} di {\em gnuplot}, che si invoca con il comando
+  \texttt{help}, inserire una legenda nel grafico e riscalare gli assi $x$ e $y$ in modo che vadano dalla pi\`u piccola alla pi\`u grande delle temperature scelte. 
+\end{enumerate}  
+\end{document}

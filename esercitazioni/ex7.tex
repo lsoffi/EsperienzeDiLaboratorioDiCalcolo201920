@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx,wasysym, mdframed,xcolor,gensymb,verbatim}
+\usepackage{color}
+\usepackage{floatflt}
+\usepackage[italian]{babel}
+
+\def\cmu{\mbox{cm$^{-1}$}}
+\def\half{\frac{1}{2}}
+
+\voffset -2cm
+\hoffset -2.5cm
+%\marginparwidth 0cm
+\textheight 22cm
+\textwidth 17cm
+%\oddsidemargin  0.2cm                                                                                         
+%\evensidemargin 0.4cm                                                                                         
+\parindent 0pt
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+{\Large \bf  Laboratorio di Calcolo per Fisici, Settima esercitazione\\[2mm]}
+{\large Canale D-K, Docente: Lilia Boeri}
+\end{center}
+\vspace{4mm}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+  Lo scopo della settima esercitazione di laboratorio \`e di fare pratica con
+gli argomenti appresi durante il corso in vista delle esercitazioni valutate;
+l'argomento di questa esercitazione \`e la gestione di matrici $3 \times 3$.
+  \end{mdframed}
+%\vspace{1mm}
+%
+%
+
+
+
+\hrule
+\vspace{2mm}
+Il determinante di una matrice quadrata $3 \times 3$ si pu`o calcolare usando la {\em regola di Sarrus}, che consiste in quanto segue: dalla matrice A, con$ N \! = \!  3$ righe 
+e altrettante colonne, se ne ricava una $B$ con $N$ righe e $2N$ colonne in
+cui la met`a destra di $B$ `e una copia esatta di $A$. Si calcolano quindi i prodotti $p$ degli elementi che si trovano
+lungo tutte le $N$ diagonali che si possono costruire partendo dall’elemento in alto a sinistra e si sommano tra loro
+algebricamente. Successivamente si calcolano gli $N$ prodotti degli elementi che si trovano lungo le $N$ diagonali che
+si possono costruire in direzione opposta partendo dall’elemento in alto a destra di $B$. Questi prodotti si sommano
+col segno cambiato a quanto ottenuto al passaggio precedente. Il risultato di questa somma `e il determinante della
+matrice.
+
+Consideriamo, per esempio, la matrice seguente:
+\[
+A = \left(\begin{array}{ccc}
+5 &8& 6\\
+3 &5 &9\\
+7 & 9 & 9
+\end{array}
+\right)
+\]
+‚
+Ricaviamo la matrice $B$ come
+\[
+B = \left(\begin{array}{cccccc}
+5 & 8 & 6 &5 & 8 & 6\\
+3 & 5 & 9 &3 &5  &9\\
+7 & 9 & 9 &7 &9 & 9
+\end{array}
+\right)
+\]
+‚
+Le possibili diagonali dall’elemento in alto a sinistra formano i seguenti prodotti: $(5 \times 5 \times 9)= 225$;
+$(8 \times 9 \times 7)= 504$; 
+e $(6\times3\times9)=162$. Quelle in direzione opposta sono invece: 
+$(6\times5\times7)=210$, $(8\times3\times9)=216$ e $(5\times9\times9)=405$.
+\\
+Dati questi valori si calcola
+$\det A = 225 + 504 +162 - 210 - 216 -405= 60$ .
+
+\vspace{2mm}
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Prima parte:}
+
+\begin{enumerate}
+\item Creare un programma \texttt{sarrus.c} che calcoli il determinante di una matrice $3 \times 3$ 
+utilizzando la formula di Sarrus.
+\item Il programma dovr\`a offrire all'utente la possibilit\`a di inserire gli elementi da tastiera 
+o di leggerli da file, e stampare il determinante su schermo.
+\item Stampate  la matrice A sullo schermo in maniera leggibile.
+\end{enumerate}
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Seconda parte:}
+\vspace{2mm}
+\begin{enumerate}
+\item
+Aggiungete al programma una funzione \texttt{genvec} che generi un vettore $\vec{x}$ con tre componenti {\em random} 
+$\left(x_1,x_2,x_3\right)$.
+\item Aggiungere una funzione \texttt{product} che calcoli il risultato del prodotto: 
+$\vec{y}=A \vec{x}$ e lo salvi sul vettore $\vec{y}$.
+\item Infine create una funzione \texttt{stampa}  perch\`e stampi su schermo in un formato elegante:
+$\vec{y}=A \vec{x}$.
+\end{enumerate}
+{\bf N.B.:} Tutte le operazioni indicate sopra potrebbero essere eseguite direttamente nel \texttt{main}, ma lo scopo
+di questa esercitazione \`e fare pratica con le funzioni che gestiscono vettori e array multidimensionali (paragrafo 7.3
+del libro di testo). 
+\\
+\begin{mdframed}[backgroundcolor=gray!10]
+{\em Un piccolo aiuto:} Per passare un array multidimensionale a una funzione \`e sempre necessario specificare la seconda  dimensione dell'array in maniera esplicita sia in fase di dichiarazione che di definizione della funzione;
+il {\em prototipo} della funzione \texttt{prodotto} \`e perci\`o qualcosa del tipo:
+\\
+\texttt{
+void product (float [][3], float *, float *);}.
+\end{mdframed}
+
+
+
+\end{document}

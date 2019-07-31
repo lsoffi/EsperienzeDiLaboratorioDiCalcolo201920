@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx,wasysym, mdframed,xcolor,gensymb,verbatim}
+\usepackage{color}
+\usepackage{floatflt}
+\usepackage[italian]{babel}
+
+\def\cmu{\mbox{cm$^{-1}$}}
+\def\half{\frac{1}{2}}
+
+\voffset -2cm
+\hoffset -2.5cm
+%\marginparwidth 0cm
+\textheight 22cm
+\textwidth 17cm
+%\oddsidemargin  0.2cm                                                                                         
+%\evensidemargin 0.4cm                                                                                         
+\parindent 0pt
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+{\Large \bf  Laboratorio di Calcolo per Fisici, Terza esercitazione\\[2mm]}
+{\large Canale Pb-Z, Docente: Lilia Boeri}
+\end{center}
+\vspace{4mm}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+  Lo scopo della terza esercitazione di laboratorio \`e di fare pratica con
+le istruzioni di controllo di flusso \texttt{if... (then) ... else}; \texttt{while ... do};
+\texttt{for ...}, scrivendo un programma che localizza gli zeri di una funzione
+all'interno di un intervallo dato.
+  \end{mdframed}
+%\vspace{1mm}
+%
+%
+
+
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Prima parte:}
+
+Scrivere un programma \texttt{sinxx.c} che, utilizzando un opportuno ciclo iterativo,
+calcoli il valore della funzione $f(x)=\frac{\sin(x)}{x}$ in una serie di
+punti equispaziati lungo l'asse $x$, nell'intervallo $x \in \left[-15,15 \right]$.
+Si noti che:
+\begin{enumerate}
+\item  {\bf Il numero di punti} $N_{p}$ deve essere sufficiente a dar vita ad un grafico ragionevolmente continuo delle funzione ($N_p \ge 100$);
+\item Se la funzione viene calcolata nel punto $x=0$ \`e probabile che il programma restituisca il valore $nan$ (\emph{not a number}), 
+dal momento che si 
+tratta di valutare un'espressione del tipo $\frac{0}{0}$. Il limite per $x \to 0$ di 
+$\frac{\sin(x)}{x}$ \`e noto e vale: $\lim_{x \to 0} \frac{\sin(x)}{x} = 1$.
+ Inserire nel programma un'opportuna  istruzione \texttt{IF} che corregga il risultato numerico con il valore analitico corretto in x=0.
+\item Scrivere i risultati su un file \texttt{sinxx.dat} di $N_p$ righe e 2 colonne, nella forma: $x,y$. Per compiere questa operazione potete o incollare manualmente l'output dello schermo su un file vuoto, o {\em ridirigere} l'output
+del vostro programma su un file con il comando:
+\\
+\texttt{./programma.x > file\_out}
+
+\item Creare con \texttt{gnuplot} un grafico della funzione $\frac{\sin(x)}{x}$
+utilizzando i punti calcolati e salvarlo sul file \texttt{sinxx.gif}. 
+ Quanti zeri ci sono nell'intervallo $\left[ -15,15 \right]$? Dove sono?
+\end{enumerate}
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Seconda parte:}
+
+Scrivere un programma \texttt{zero.c} che calcoli automaticamente il numero degli zeri della funzione $f(x)=\frac{\sin(x)}{x}$ nell'intervallo $\left[a,b\right] = \left[-15,15 \right]$ mediante il seguente algoritmo,
+basato sul teorema degli zeri di una funzione continua.
+\\
+({\em Attenzione, l'idea di base \`e simile a quella dell'algoritmo di bisezione,
+ma l'algoritmo \`e diverso!}).
+\begin{enumerate}
+\item L'intervallo di partenza viene diviso in $N$ intervalli contigui,
+tutti uguali, di estremi $x_L^{i}, x_R^{i}$, $i=0,...,(N-1)$.
+\item Per ciascun intervallo l'algoritmo controlla la presenza di eventuali 
+zeri calcolando il valore di $s=f(x_L^{i})\cdot f(x_R^i)$. Se $s>0$,
+non ci sono zeri; se $s \le 0$, c'\`e uno zero.
+\item Alla fine dell'esecuzione, il programma restituisce il numero totale di zeri
+trovati dall'algoritmo, N$_{zero}$.
+\end{enumerate}
+
+\newpage
+
+\hrule
+\vspace{2mm}
+\textbf{$\RHD$ Terza parte (facoltativa):}
+\begin{enumerate}
+\item Far girare il programma \texttt{zero.c} con un numero variabile di intervalli 
+$N \ge 1$ e creare un file che contenga $N, N_{zero}$.
+\item Graficare l'andamento di $N, N_{zero}$: qual \`e il valore minimo di $N$
+per cui vengono trovati tutti gli zeri? Qual \`e la {\em risoluzione} corrispondente?
+\item Se il valore $N=3,4,5,6$ non fanno parte della vostra scelta iniziale, fate girare il programma anche per questi valori. Quanti zeri trovate? Perch\'e? 
+{\em Scrivete le risposte a queste ultime due domande su un file risposte.txt
+nella cartella \texttt{EX3}}.
+\item Utilizzando diversi valori di $N$ abbastanza grandi da trovare tutti gli zeri,
+fate stampare al vostro programma la vostra migliore stima del valore degli zeri con la relativa incertezza.
+\end{enumerate}
+
+
+
+\begin{mdframed}[backgroundcolor=gray!10]
+\textbf{$\RHD$ Attenzione!}
+A volte, per via di un errore di programmazione, pu`o succedere che un programma entri in un {\em loop infinito}.
+Se questo succede, ci sono due modi di interrompere l'esecuzione:
+\begin{itemize}
+\item Se il programma \`e in esecuzione nella {\em shell}: premere la combinazione di tasti \texttt{CTRL+C}.
+\item Se il programma \`e in esecuzione in modalit\`a {\em background}:
+aprire una nuova shell. Lanciare il programma \texttt{top} (non in modalit\`a
+ {\em background}). Individuare il PID ({\em Process Identifier}) del programma bloccato. Premere \texttt{q} per uscire da top.
+Digitare della shell il comando: \texttt{kill -9 numero$_{PID}$} (Enter).
+\end{itemize}
+\end{mdframed}
+
+ 
+
+\end{document}
