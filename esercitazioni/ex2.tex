@@ -3,7 +3,7 @@
 \usepackage{color}
 \usepackage{floatflt}
 \usepackage[italian]{babel}
-
+\usepackage{listings}
 \def\cmu{\mbox{cm$^{-1}$}}
 \def\half{\frac{1}{2}}
 
@@ -111,33 +111,30 @@ Verificare che i risultati ottenuti con il programma riproducano quelli che si o
 
 In questa terza parte dell'esercitazione useremo il programma \texttt{circle.c} per
 studiare l'andamento del moto circolare uniforme, utilizzando \texttt{gnuplot}.
-
+\lstset{language=Python}  
 \begin{enumerate}
 \item Eseguire il programma \texttt{circle.c} un numero di volte sufficiente ad avere una distribuzione di punti su tutta la traiettoria circolare; salvare
   i risultati su un file \texttt{traiettoria.dat} che contenga tre colonne $t,x,y$, come nel punto 4. del precedente esercizio.
-  {\em Ricordatevi che se volete inserire un'intestazione in un file di dati letto da gnuplot, dovete farla precedere dal carattere cancelletto (\texttt{\#})}.
-\item Utilizzare \texttt{gnuplot} per graficare la traiettoria, plottando $y$ in funzione di $x$.
-  {\em Per plottare solo due colonne di un file che ne contiene molte, in \texttt{gnuplot} si usa l'opzione \texttt{using (u)}. Nel nostro caso, se volessimo plottare solo la seconda e la terza colonna scriveremmo:
-    \\
-    \texttt{plot 'traiettoria.dat' u 2:3}}
+  {\em Ricordatevi che se volete inserire un'intestazione in un file di dati letto tramite \texttt{loadtxt} in \texttt{python}, dovete aggiungere il parametro \texttt{comments='\#'}, assumendo che i commenti inizino con il simbolo \texttt{\#}}.
+
+\item Utilizzare \texttt{python} per graficare la traiettoria, plottando $y$ in funzione di $x$.
+  Per plottare solo due colonne di un file che ne contiene molte, la funzione \textbf{\lstinline{loadtext}} va chiamata con il parametro \textbf{\lstinline[language=python]{usecols(i,j)}}, dove \lstinline{i} e \lstinline{j} sono le colonne da plottare ($0$ è la prima colonna). Nel nostro caso, se volessimo plottare solo la seconda e la terza colonna scriveremmo nello script \texttt{python}: \\
+\begin{mdframed}[backgroundcolor=gray!10]
+\begin{lstlisting}
+  np.loadtext('traiettoria.dat', usecols(1:2))
+\end{lstlisting}
+\end{mdframed}
 \item 
   Creare altri due grafici che mostrino l'andamento della coordinata $x$ e della coordinata $y$ in funzione del tempo, rispettivamente.
-\item Salvare i tre grafici in tre file separati, chiamati: \texttt{traiettoria.gif; x.gif; y.gif}.
-  {\em Per salvare i grafici con gnuplot, bisogna selezionare un opportuno terminale con il comando
-    \texttt{set term <nome\_terminale>} e riplottare il grafico sul nuovo terminale con il comando
-    replot. }
+\item Salvare i tre grafici in tre file separati, chiamati: \texttt{traiettoria.png; x.png; y.png}.
+  {\em Per salvare i grafici con gnuplot, bisogna usare il seguento comando python}
   \begin{mdframed}[backgroundcolor=gray!10]
-\texttt{set term gif
-\\
-  set out 'traiettoria.gif'
-\\
-  replot
-\\
-  set term X11
-}
+   \begin{lstlisting}
+     plt.savefig('traiettoria.png')
+   \end{lstlisting}
   \end{mdframed}
-  (L'ultimo comando rimanda l'output sulla finestra).
-  L'alternativa e' usare l'interfaccia della finestra grafica di \texttt{gnuplot}.
+  %(L'ultimo comando rimanda l'output sulla finestra).
+  %L'alternativa e' usare l'interfaccia della finestra grafica di \texttt{gnuplot}.
 \item Se i grafici sono corretti, dovreste saper rispondere alle seguenti domande: $a$) quanto vale il raggio della traiettoria? $b$) Qual \`e l'equazione della traiettoria? ({\em Per equazione della
   traiettoria si intende un'espressione del tipo $f(x,y)=c$ soddisfatta da tutti i punti della traiettoria}). $c$) Qual \`e il {\em periodo} della traiettoria? $d$) In quali punti sono massimi/minimi i valori di $x(t)$ e $y(t)$? ({\em Scrivere le risposte su un file di testo \texttt{risposte.txt})}.
   \end{enumerate}
@@ -159,8 +156,13 @@ v_y(t) = \omega R \cos \left(\omega t \right),
 \item Modificare il programma \texttt{circle.c} per calcolare anche la velocit\`a del punto lungo la traiettoria.
 \item Graficare l'andamento della velocit\`a in funzione del tempo lungo la traiettoria: quanto vale il {\em modulo della velocit\`a}? In che direzione punta il {\em vettore velocit\`a} per $t=0$?
   E per $t=10$? In quali punti  sono massimi/minimi i valori di $v_x(t)$ e $v_y(t)$? Qual \`e il significato fisico di quello che osservate ? ({\em Scrivere le risposte sul file di testo \texttt{risposte.txt})} creato in precedenza.
-\item (Avanzato): Usando l'help di gnuplot, disegnare il vettore velocit\`a lungo la traiettoria,
-  come una freccia che punta nella direzione corretta.
+\item Disegnare il vettore velocit\`a lungo la traiettoria, come una freccia che punta nella direzione corretta sfruttando
+  il comando \emph{python}:
+  \begin{mdframed}[backgroundcolor=gray!10]
+    \begin{lstlisting}
+      plt.arrow 
+    \end{lstlisting}
+  \end{mdframed}
 \end{enumerate}  
 
 \vspace{2mm}
