@@ -57,5 +57,6 @@ __pycache__/
 *$py.class
 .DS_Store
 
-*/*.swp
-*/*.pdf
+**/*.swp
+**/*.pdf
+**/*.dat
