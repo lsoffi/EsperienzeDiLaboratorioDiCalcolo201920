@@ -97,10 +97,10 @@ Verificare che i risultati ottenuti con il programma riproducano quelli che si o
 
 \item {\em Suggerimento:} Per modificare piccole parti di programma senza cancellare quello che
   si \`e fatto in precedenza pu\`o essere utile inserire un {\em commento}.
-  In $C$ un commento \`e racchiuso dai delimitatori \texttt{*/} e  \texttt{/*}, come nell'esempio
+  In $C$ un commento \`e racchiuso dai delimitatori \texttt{/*} e  \texttt{*/}, come nell'esempio
   sottostante:
   \\
-  \texttt{*/ Questo e' un commento */}
+  \texttt{/* Questo e' un commento */}
   
 \end{enumerate}
 
@@ -118,10 +118,12 @@ studiare l'andamento del moto circolare uniforme, utilizzando \texttt{gnuplot}.
   {\em Ricordatevi che se volete inserire un'intestazione in un file di dati letto tramite \texttt{loadtxt} in \texttt{python}, dovete aggiungere il parametro \texttt{comments='\#'}, assumendo che i commenti inizino con il simbolo \texttt{\#}}.
 
 \item Utilizzare \texttt{python} per graficare la traiettoria, plottando $y$ in funzione di $x$.
-  Per plottare solo due colonne di un file che ne contiene molte, la funzione \textbf{\lstinline{loadtext}} va chiamata con il parametro \textbf{\lstinline[language=python]{usecols(i,j)}}, dove \lstinline{i} e \lstinline{j} sono le colonne da plottare ($0$ è la prima colonna). Nel nostro caso, se volessimo plottare solo la seconda e la terza colonna scriveremmo nello script \texttt{python}: \\
+  {\em Per plottare solo due colonne di un file che ne contiene molte, la funzione \texttt{loadtext} va chiamata 
+  con il parametro \texttt{usecols(i,j)}, dove \lstinline{i} e \lstinline{j} sono le colonne da plottare ($0$ è la prima colonna). Nel nostro caso, se volessimo plottare solo la seconda e la terza colonna il comando completo da usare nello script \texttt{python} diventa:} \\
 \begin{mdframed}[backgroundcolor=gray!10]
 \begin{lstlisting}
-  np.loadtext('traiettoria.dat', usecols(1:2))
+np.loadtext('traiettoria.dat', comments=['#'], usecols(1:2),
+    delimiter=' ', unpack=True)
 \end{lstlisting}
 \end{mdframed}
 \item 

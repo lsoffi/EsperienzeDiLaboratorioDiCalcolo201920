@@ -10,7 +10,7 @@ conv = 5.0/9.0
 offset = 32.0
 y=x/conv + offset
 plt.plot(x,y,label='retta interpolante')
-x, y = np.loadtxt('temp.dat', delimiter=' ', unpack=True)
+x, y = np.loadtxt('temp.dat', unpack=True)
 plt.plot(x,y, 'x',label='temp.dat')
 #ottiene gli estremi attuali
 #left, right = plt.xlim()  
