@@ -58,5 +58,7 @@ __pycache__/
 .DS_Store
 
 **/*.swp
-**/*.pdf
 **/*.dat
+**/*.aux
+**/*.log
+**/*.synctex.gz
