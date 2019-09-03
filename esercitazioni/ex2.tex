@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{graphicx,wasysym, mdframed,xcolor,gensymb,verbatim}
 \usepackage{color}
+\usepackage{listings}
 \usepackage{floatflt}
 \usepackage[italian]{babel}
 \usepackage{listings}
@@ -16,6 +17,7 @@
 %\evensidemargin 0.4cm                                                                                         
 \parindent 0pt
 
+\input{listings_styles.tex}
 \begin{document}
 \pagestyle{empty}
 
@@ -23,9 +25,9 @@
 {\Large \bf  Laboratorio di Calcolo per Fisici, Seconda esercitazione\\[2mm]}
 {\large Canale Pb-Z, Docente: Lilia Boeri}
 \end{center}
-\vspace{4mm}
+\vspace{1mm}
 
-\begin{mdframed}[backgroundcolor=gray!10]
+\begin{mdframed}[backgroundcolor=panna]
   Lo scopo della seconda esercitazione di laboratorio \`e di
   scrivere da zero dei semplici programmi in c, usando le funzioni
   della libreria matematica \texttt{math.h} e di familiarizzarsi con i diversi
@@ -35,9 +37,8 @@
 %\vspace{1mm}
 %
 %
-
 \hrule
-\vspace{2mm}
+\vspace{1mm}
 \textbf{$\RHD$ Prima parte:} 
 \begin{enumerate}
 \item Scrivere da zero il programma C \texttt{matematica.c} che, utilizzando la libreria matematica esterna \texttt{math.h}, calcoli correttamente e stampi su schermo i valori delle seguenti espressioni:
@@ -51,8 +52,9 @@
 
 \item {\bf Attenzione!} Per {\em linkare} la libreria \texttt{math.h} bisogna inserire un opportuno comando
 nell'{\em header} del programma, e chiamare il compilatore \texttt{gcc} con l'opzione -lm, cio\`e:\\
-  \texttt{gcc matematica.c -lm -o matematica.x}
-  
+\begin{lstlisting}[language=bash]
+  gcc matematica.c -lm -o matematica.x
+\end{lstlisting} 
 \item Una volta verificato che il programma calcola esattamente le quantit\`a richieste, utilizzare i comandi di formattazione del C per stampare i risultati
   su due righe con i seguenti formati: {\em Per i numeri interi}: massimo tre cifre; {\em Per i numeri razionali}: quattro cifre dopo la virgola.
   \\
@@ -66,7 +68,7 @@ e lo stampi all'interno del messaggio di benvenuto; il risultato finale deve ess
 \end{enumerate}
 
 \hrule
-\vspace{2mm}
+\vspace{1mm}
 \textbf{$\RHD$ Seconda parte:} 
 Un moto circolare uniforme nel piano $(x,y)$ \`e descritto dalle equazioni:
 \[
@@ -99,19 +101,18 @@ Verificare che i risultati ottenuti con il programma riproducano quelli che si o
   si \`e fatto in precedenza pu\`o essere utile inserire un {\em commento}.
   In $C$ un commento \`e racchiuso dai delimitatori \texttt{/*} e  \texttt{*/}, come nell'esempio
   sottostante:
-  \\
-  \texttt{/* Questo e' un commento */}
-  
+  \begin{lstlisting}[language=c,numbers=none]
+  /* Questo e' un commento */
+\end{lstlisting}
 \end{enumerate}
 
 
 \hrule
-\vspace{2mm}
+\vspace{1mm}
 \textbf{$\RHD$ Terza parte (obbligatoria)} 
 
 In questa terza parte dell'esercitazione useremo il programma \texttt{circle.c} per
 studiare l'andamento del moto circolare uniforme, utilizzando \texttt{gnuplot}.
-\lstset{language=Python}  
 \begin{enumerate}
 \item Eseguire il programma \texttt{circle.c} un numero di volte sufficiente ad avere una distribuzione di punti su tutta la traiettoria circolare; salvare
   i risultati su un file \texttt{traiettoria.dat} che contenga tre colonne $t,x,y$, come nel punto 4. del precedente esercizio.
@@ -120,21 +121,17 @@ studiare l'andamento del moto circolare uniforme, utilizzando \texttt{gnuplot}.
 \item Utilizzare \texttt{python} per graficare la traiettoria, plottando $y$ in funzione di $x$.
   {\em Per plottare solo due colonne di un file che ne contiene molte, la funzione \texttt{loadtext} va chiamata 
   con il parametro \texttt{usecols(i,j)}, dove \lstinline{i} e \lstinline{j} sono le colonne da plottare ($0$ è la prima colonna). Nel nostro caso, se volessimo plottare solo la seconda e la terza colonna il comando completo da usare nello script \texttt{python} diventa:} \\
-\begin{mdframed}[backgroundcolor=gray!10]
-\begin{lstlisting}
-np.loadtext('traiettoria.dat', comments=['#'], usecols(1:2),
-    unpack=True)
+  \begin{lstlisting}[language=Python,numbers=none]
+  np.loadtext('traiettoria.dat', comments=['#'], usecols(1:2),
+      unpack=True)
 \end{lstlisting}
-\end{mdframed}
 \item 
   Creare altri due grafici che mostrino l'andamento della coordinata $x$ e della coordinata $y$ in funzione del tempo, rispettivamente.
 \item Salvare i tre grafici in tre file separati, chiamati: \texttt{traiettoria.png; x.png; y.png}.
   {\em Per salvare i grafici con gnuplot, bisogna usare il seguento comando python}
-  \begin{mdframed}[backgroundcolor=gray!10]
-   \begin{lstlisting}
+\begin{lstlisting}[language=Python,numbers=none]
      plt.savefig('traiettoria.png')
-   \end{lstlisting}
-  \end{mdframed}
+\end{lstlisting}
   %(L'ultimo comando rimanda l'output sulla finestra).
   %L'alternativa e' usare l'interfaccia della finestra grafica di \texttt{gnuplot}.
 \item Se i grafici sono corretti, dovreste saper rispondere alle seguenti domande: $a$) quanto vale il raggio della traiettoria? $b$) Qual \`e l'equazione della traiettoria? ({\em Per equazione della
@@ -142,7 +139,7 @@ np.loadtext('traiettoria.dat', comments=['#'], usecols(1:2),
   \end{enumerate}
 
 \hrule
-\vspace{2mm}\textbf{$\RHD$ Quarta parte (facoltativa)\\}
+\vspace{1mm}\textbf{$\RHD$ Quarta parte (facoltativa)\\}
 
 L'andamento delle {\em componenti} della velocit\`a in un moto circolare uniforme \`e dato da:
 \[
@@ -159,18 +156,25 @@ v_y(t) = \omega R \cos \left(\omega t \right),
 \item Graficare l'andamento della velocit\`a in funzione del tempo lungo la traiettoria: quanto vale il {\em modulo della velocit\`a}? In che direzione punta il {\em vettore velocit\`a} per $t=0$?
   E per $t=10$? In quali punti  sono massimi/minimi i valori di $v_x(t)$ e $v_y(t)$? Qual \`e il significato fisico di quello che osservate ? ({\em Scrivere le risposte sul file di testo \texttt{risposte.txt})} creato in precedenza.
 \item Disegnare il vettore velocit\`a lungo la traiettoria, come una freccia che punta nella direzione corretta sfruttando
-  il comando \emph{python}:
-  \begin{mdframed}[backgroundcolor=gray!10]
-    \begin{lstlisting}
-      plt.arrow 
-    \end{lstlisting}
-  \end{mdframed}
+  il seguente codice \emph{python}:\\
+\\
+
+\begin{lstlisting}[language=Python,numbers=none]
+  x, y, vx, vy = np.loadtxt('temp.dat', usecols=(0,1,2,3), unpack=True)
+  for cc in range(0,len(x)):
+    xi=x[cc]
+    yi=y[cc]
+    vxi=vx[cc]
+    vyi=vy[cc]
+    plt.arrow(xi,yi,vxi,vyi,width=0.2,head_width=0.5,head_length=0.3, 
+      fc='r', ec='r')   
+\end{lstlisting}
+che disegna \texttt{len(x)} frecce di lunghezza \texttt{(vx,vy)} nei punti \texttt{(x,y)}. 
 \end{enumerate}  
-
-\vspace{2mm}
-
+\vspace{-2mm}
+\newpage
 \textbf{Funzioni pi\'u comuni della libreria \texttt{math.h}:}
-\begin{mdframed}[backgroundcolor=gray!10]
+\begin{mdframed}[backgroundcolor=panna]
 \texttt{{\bf acos}	arcocoseno
 \\
 {\bf asin}	arcoseno
