@@ -3,9 +3,13 @@
 \usepackage{color}
 \usepackage{floatflt}
 \usepackage[italian]{babel}
-
-\usepackage{listings}
-
+%T1 garantisce la visualizzazione corretta del font  FiraMono usato per i codici
+%con T1 i caratteri sono rappresentati a 8 bit e quindi si hanno a disposizione 256 glyphs
+%la scelta migliore sare TU (unicode) ma questa è supportata solo da XeTeX e LuaTeX
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listingsutf8}
+\input{listings_styles.tex}
 \newcommand{\voto}[1]{[\textbf{#1} punti]}
 \def\cmu{\mbox{cm$^{-1}$}}
 \def\half{\frac{1}{2}}
@@ -28,14 +32,14 @@
 \end{center}
 \vspace{4mm}
 
-\begin{mdframed}[backgroundcolor=gray!10]
+\begin{mdframed}[backgroundcolor=panna]
   Lo scopo della prima esercitazione di laboratorio \`e di introdurre gli strumenti di base che verranno usati nel corso delle successive esercitazioni:
-  la {\em shell}, l'editor di testo {\em emacs}, il compilatore {\em gcc}, e {\em python\/} (tramite le librerie
+  la {\em shell}, l'editor di testo, il compilatore {\em gcc}, e {\em python\/} (tramite le librerie
   {\em matplotlib\/} e {\em numpy\/}) per la grafica.
 \\
-  Sulla pagina web del corso
-  ({\em https://lboeri.wordpress.com/teaching/labcalc/ex/})
-  sono disponibili dei tutorial pi\`u avanzati su ciascuno di questi argomenti.
+ % Sulla pagina web del corso
+ % ({\em https://lboeri.wordpress.com/teaching/labcalc/ex/})
+ % sono disponibili dei tutorial pi\`u avanzati su ciascuno di questi argomenti.
 \end{mdframed}
 %\vspace{1mm}
 %
@@ -45,24 +49,24 @@
 \vspace{2mm}
 \textbf{$\RHD$ Prima parte (obbligatoria)} 
 \begin{enumerate}
-\item Effettuare il {\em login} sulla propria macchina {\em Unix} utilizzando lo {\em userid}  \texttt{lcblxx}, dove $xx$ \`e il numero del gruppo a cui siete stati assegnati.
+\item Effettuare il {\em login\/} sulla propria macchina {\em Unix\/} utilizzando lo {\em userid\/} \texttt{lcblxx}, 
+dove $xx$ \`e il numero del gruppo a cui siete stati assegnati.
 \item Aprire una finestra di {\em terminale}.
 \item Creare una cartella  \texttt{EX1} in cui copiare il materiale della prima esercitazione.
 \item Nella cartella \texttt{EX1} aprire con l'editor di testo il file \texttt{temp.c}, e digitare il listato sottostante. Salvare il contenuto del file.
+
 \item Compilare il programma in c digitando sul terminale:
   \texttt{gcc temp.c -o temp.x}
-\item Eseguire il file {\em temp.x} digitando \texttt{./temp.x}
+\item Eseguire il file {\em temp.x\/} digitando \texttt{./temp.x}
 \item Inserire i dati richiesti dal programma; il programma \`e un semplice convertitore di temperature da gradi Celsius a gradi Fahrenheit.
 \item Sempre nella cartella \texttt{EX1} aprire con l'editor di testo il file \texttt{ex1\_2.py} e digitare il listato
   sottostante rispettando accuratamente l'indentazione:
-\begin{mdframed}[backgroundcolor=gray!10]
-  {\bf Listato del programma \texttt{temp.c}}
-  \begin{verbatim}
+\end{enumerate}
+\begin{lstlisting}[caption={Programma \texttt{temp.c}},language=c]
 #include <stdio.h>
 int main ()
 {
   double tc,tf,conv,offset;
-
   conv =5./9.;
   offset = 32.;
   printf("Inserisci la tempeatura in gradi Celsius \n");
@@ -70,21 +74,18 @@ int main ()
   tf=tc/conv+offset;
   printf("La temperatura in gradi Fahrenheit vale %5.2f gradi\n",tf);
 }
-\end{verbatim}
-\end{mdframed}
+\end{lstlisting}
 
-\begin{mdframed}[backgroundcolor=gray!10]
-  {\bf Listato del programma {\it python} \texttt{ex1\_2.py}}
-\begin{verbatim}
+\newpage
+\begin{lstlisting}[caption={Programma {\it python} \texttt{ex1\_2.py}},language=Python]
 #!/usr/bin/env python3
 import matplotlib.pyplot as plt
 import numpy as np
 plt.title('Un primo plot con Python')
 x, y = np.loadtxt('temp.dat', unpack=True)
 plt.plot(x,y, 'x',label='Loaded from file!')
-plt.show()\end{verbatim}
-\end{mdframed}
-\end{enumerate}
+plt.show()
+\end{lstlisting}
 
 \hrule
 \vspace{2mm}
@@ -92,13 +93,15 @@ plt.show()\end{verbatim}
 %
 \begin{enumerate}
 \item Eseguire il programma \texttt{temp.x} quattro o pi\`u volte, con valori di input diversi, e creare un file di testo chiamato \texttt{temp.dat} con due colonne,
-  che contenga i valori di input e di output - temperatura in Celsius (Tc) e
+  che contenga i valori di input e di output --- temperatura in Celsius (Tc) e
   temperatura in Fahrenheit (Tf).
 %\item 
   %Aprire il programma di grafica \texttt{gnuplot} digitando nella shell il
   %comando \texttt{gnuplot}.
 \item Dal terminale graficare i dati contenuti nel file \texttt{temp.dat} con il comando:\\
-\texttt{python3 ./ex1\_2.py}
+  \begin{lstlisting}[language=bash,numbers=none]
+python3 ./ex1\_2.py
+\end{lstlisting}
 \item Aggiungere le legende all'asse $x$ e $y$ aggiungendo prima di \texttt{plt.show()} i comandi:
 \\
 \texttt{plt.xlabel('Tc')};
@@ -112,15 +115,13 @@ plt.show()\end{verbatim}
 \hrule
 \vspace{2mm}\textbf{$\RHD$ Terza parte (facoltativa)\\}
 %
-Con {\it Python} e le librerie {\it matplotlib} \`e possibile graficare non solo dati contenuti in un file esterno, ma anche funzioni definite dall'utente. Per esempio, 
+Con {\it Python\/} e le librerie {\it matplotlib\/} \`e possibile graficare non solo dati contenuti in un file esterno, ma anche funzioni definite dall'utente. Per esempio, 
 per plottare la funzione $y=x$ \`e sufficiente aggiungere prima di \texttt{plt.title}: 
-\begin{mdframed}[backgroundcolor=gray!10]
-  \begin{verbatim}
+\begin{lstlisting}[language=c]
     x=np.linspace(-10,50,100)
     y=x
     plt.plot(x,y,label='retta y=x')
-\end{verbatim}
-\end{mdframed}
+\end{lstlisting}
 In questo modo viene aggiunto il plot della retta \texttt{y=x} nell'intervallo \texttt{[-10,50]}. 
 %i dati presenti sullo schermo e viene disegnata la funzione $y=x$ in un intervallo arbitrario. Per sovrapporre una funzione a dei dati, si utilizza il comando {\em replot}.
 
@@ -133,7 +134,7 @@ In questo modo viene aggiunto il plot della retta \texttt{y=x} nell'intervallo \
 %\end{mdframed}
 
 \begin{enumerate}
-  \item Utilizzando le funzionalit\`a in {\it python} appena descritte, disegnare la retta che interpola i dati generati dal programma \texttt{temp.x}.
+  \item Utilizzando le funzionalit\`a in {\it python\/} appena descritte, disegnare la retta che interpola i dati generati dal programma \texttt{temp.x}.
 \item 
 %Utilizzando l'{\em help} di {\em gnuplot}, che si invoca con il comando \texttt{help},
   Inserire una legenda nel grafico per la retta interpolante e riscalare gli assi $x$ e $y$ in modo che vadano dalla pi\`u piccola alla pi\`u grande delle temperature scelte. 
