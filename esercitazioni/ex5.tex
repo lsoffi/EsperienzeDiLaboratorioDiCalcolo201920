@@ -3,7 +3,7 @@
 \usepackage{color}
 \usepackage{floatflt}
 \usepackage[italian]{babel}
-
+\input{listings_styles.tex}
 \def\cmu{\mbox{cm$^{-1}$}}
 \def\half{\frac{1}{2}}
 
@@ -14,7 +14,7 @@
 \textwidth 17cm
 %\oddsidemargin  0.2cm                                                                                         
 %\evensidemargin 0.4cm                                                                                         
-\parindent 0pt
+\parindent=0pt
 
 \begin{document}
 \pagestyle{empty}
@@ -25,7 +25,7 @@
 \end{center}
 \vspace{4mm}
 
-\begin{mdframed}[backgroundcolor=gray!10]
+\begin{mdframed}[backgroundcolor=panna]
   Lo scopo della quinta esercitazione di laboratorio \`e di fare pratica con
 le istruzioni di input/output da file e la gestione degli array, scrivendo un programma
 che simula la gestione del personale di un piccolo negozio.
@@ -44,7 +44,7 @@ che simula la gestione del personale di un piccolo negozio.
 contenga un riassunto dei dati trimestrali di vendita dei 10 commessi di
 un piccolo negozio di computer. Il file contiene tre colonne: numero del commesso (C);  euro totali incassati (V); ore lavorate (H) e
 10 righe (una per commesso).
-\begin{mdframed}[backgroundcolor=gray!10]
+\begin{mdframed}[backgroundcolor=panna]
 \texttt{1    450   32\\
 2    322   14\\
 3    870   82\\
@@ -60,8 +60,8 @@ un piccolo negozio di computer. Il file contiene tre colonne: numero del commess
 \item Scrivere un programma \texttt{leggi.c} che, utilizzando opportunamente le funzioni di lettura da un file 
 legga i dati contenuti in {\em trimestre1.dat}, li salvi in un array multidimensionale, e li stampi su schermo.
 
-\item Oltre ai dati letti dal file, il programma \texttt{leggi.c} dovr\`a
-calcolare la {\em media oraria} di vendita di ciascun commesso e stamparla sullo schermo.
+\item Oltre ai dati letti dal file, il programma \texttt{leggi.c} dovrà
+calcolare la {\em media oraria\/} di vendita di ciascun commesso e stamparla sullo schermo.
 \end{enumerate}
 
 \hrule
@@ -73,7 +73,7 @@ vendita trimestrale di ciascun commesso, stili una classifica dei 10 commessi e 
 un voto. In particolare, il programma deve: 
 \begin{enumerate}
 \item Stilare una classifica dei commessi in base alla media oraria di vendita.
-\item Dare a ciascun commesso un voto compreso tra 1 e 10 per valutare la sua performance; il commesso con la performance migliore ottiene 10 punti, il secondo 9, e cos\`i via.
+\item Dare a ciascun commesso un voto compreso tra 1 e 10 per valutare la sua performance; il commesso con la performance migliore ottiene 10 punti, il secondo 9, e così via.
 \item Stampare su schermo e su un file le seguenti informazioni per ciascun commesso:\\
 \texttt{
 $\#$  Commesso $\#$ Ore $\#$ Vendite in Euro $\#$ Media $\#$ Voto\\
@@ -86,9 +86,9 @@ $\#$  Commesso $\#$ Ore $\#$ Vendite in Euro $\#$ Media $\#$ Voto\\
 \textbf{$\RHD$ Terza parte (Facoltativa)}
 Far girare il programma \texttt{dai\_voto.c} per i quattro trimestri del 2016, utilizzando i dati riportati nel riquadro sottostante. Una volta ottenute le medie orarie e i voti di ciascun venditore per tutti i trimestri:
 \begin{enumerate}
-\item Creare con \texttt{gnuplot} un grafico che mostri l'andamento delle medie orarie per ciascun commesso; sul grafico vanno riportati simultaneamente {\bf tutti i venditori}, con una legenda esplicativa.
+\item Creare con \texttt{python} un grafico che mostri l'andamento delle medie orarie per ciascun commesso; sul grafico vanno riportati simultaneamente {\bf tutti i venditori}, con una legenda esplicativa.
 \item Fare un grafico simile che riporti l'andamento del voto di ciascun commesso in funzione del tempo.
-\item A partire dai due grafici precedenti, qual `e il commesso che ha ottenuto la performance {\em media} migliore su ciascun trimestre? Quale la peggiore?
+\item A partire dai due grafici precedenti, qual è il commesso che ha ottenuto la performance {\em media\/} migliore su ciascun trimestre? Quale la peggiore?
 Quale dei commessi ha dimostrato un margine di miglioramento e quale \`e peggiorato in maniera significativa?
 Scrivere le risposte sul file \texttt{risposte.txt}.
 \end{enumerate}
@@ -96,7 +96,7 @@ Scrivere le risposte sul file \texttt{risposte.txt}.
 
 {\bf Vendite per trimestre:}
 
-\begin{mdframed}[backgroundcolor=gray!10]
+\begin{mdframed}[backgroundcolor=panna]
 {\bf Primo trimestre:} file \texttt{trimestre1.dat}.
 \\
 {\bf Secondo, Terzo e quarto trimestre:}
@@ -111,7 +111,7 @@ Scrivere le risposte sul file \texttt{risposte.txt}.
            7$\;$        123$\;$             12$\;$        328$\;$         19$\;$            702$\;$        40\\ 
            8$\;$        426$\;$             37$\;$        544$\;$         26$\;$            187$\;$        21\\
            9$\;$        184$\;$             14$\;$        612$\;$         43$\;$            781$\;$        72\\
-           10$\!$      212$\;$         22$\;$        374$\;$         32$\;$            643$\;$        47\\}
+           10$\;$      212$\;$         22$\;$        374$\;$         32$\;$            643$\;$        47\\}
 dove H$i$, V$i$ stanno per ore e vendite di ciascun trimestre $i$.
 \end{mdframed}
  
