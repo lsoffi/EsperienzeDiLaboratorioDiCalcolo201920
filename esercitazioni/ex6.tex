@@ -3,7 +3,7 @@
 \usepackage{color}
 \usepackage{floatflt}
 \usepackage[italian]{babel}
-
+\input{listings_styles.tex}
 \def\cmu{\mbox{cm$^{-1}$}}
 \def\half{\frac{1}{2}}
 
@@ -25,7 +25,7 @@
 \end{center}
 \vspace{4mm}
 
-\begin{mdframed}[backgroundcolor=gray!10]
+\begin{mdframed}[backgroundcolor=panna]
   Lo scopo della sesta esercitazione di laboratorio \`e di fare pratica con
 le istruzioni di input/output da file e la scrittura modulare di programmi tramite funzioni.
   \end{mdframed}
@@ -71,7 +71,7 @@ una chiamata a una funzione esterna, che implementi la funzione fattoriale.
 \texttt{$n \quad \quad P(n)$}
 
 \item Dopo aver verificato che il programma funzioni correttamente e che la $P(k)$ soddisfi la condizione di
-normalizzazione, fissare $p=\frac{1}{6}$ e graficare con \texttt{gnuplot} la funzione $P(k)$ per i seguenti valori di $n$:
+  normalizzazione, fissare $p=\frac{1}{6}$ e graficare con \texttt{python} la funzione $P(k)$ per i seguenti valori di $n$:
 $n=2$; $n=4$; $n=10$; $n=20$.
 Che cosa si nota all'aumentare di $n$? Perch\`e?
 Salvate i dati usati per le figure su diversi file \texttt{bernoulli\_n.dat} e i grafici su file immagine
