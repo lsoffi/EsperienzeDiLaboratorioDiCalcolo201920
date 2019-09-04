@@ -2,9 +2,9 @@
 \usepackage{graphicx,wasysym, mdframed,xcolor,gensymb,verbatim}
 \usepackage{color}
 \usepackage{floatflt}
+\input{listings_styles.tex}
 \usepackage[shortlabels]{enumitem}
 \usepackage[italian]{babel}
-\input{listings_styles.tex}
 \def\cmu{\mbox{cm$^{-1}$}}
 \def\half{\frac{1}{2}}
 
@@ -98,8 +98,12 @@ Verificare che i risultati ottenuti con il programma riproducano quelli che si o
   si \`e fatto in precedenza pu\`o essere utile inserire un {\em commento}.
   In $C$ un commento \`e racchiuso dai delimitatori \texttt{/*} e  \texttt{*/}, come nell'esempio
   sottostante:
-  \begin{lstlisting}[language=c,numbers=none]
-  /* Questo e' un commento */
+\begin{lstlisting}[language=c,numbers=none]
+  /* Questo è un commento */
+\end{lstlisting}%
+oppure è sufficiente iniziare la linea con \texttt{//}, ovvero:
+\begin{lstlisting}[language=c,numbers=none]
+  // Anche questo è un commento
 \end{lstlisting}
 \end{enumerate}
 

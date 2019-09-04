@@ -6,9 +6,6 @@
 %T1 garantisce la visualizzazione corretta del font  FiraMono usato per i codici
 %con T1 i caratteri sono rappresentati a 8 bit e quindi si hanno a disposizione 256 glyphs
 %la scelta migliore sare TU (unicode) ma questa è supportata solo da XeTeX e LuaTeX
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{listingsutf8}
 \input{listings_styles.tex}
 \newcommand{\voto}[1]{[\textbf{#1} punti]}
 \def\cmu{\mbox{cm$^{-1}$}}
@@ -100,7 +97,7 @@ plt.show()
   %comando \texttt{gnuplot}.
 \item Dal terminale graficare i dati contenuti nel file \texttt{temp.dat} con il comando:\\
   \begin{lstlisting}[language=bash,numbers=none]
-python3 ./ex1\_2.py
+python3 ./ex1_2.py
 \end{lstlisting}
 \item Aggiungere le legende all'asse $x$ e $y$ aggiungendo prima di \texttt{plt.show()} i comandi:
 \\
