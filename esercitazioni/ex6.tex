@@ -44,13 +44,13 @@ La distribuzione \`e data da:
 \[
 P(k)=\frac{n!}{\nu! (n-k)!}p^{k}(1-p)^{n-k},
 \]
-(in questa formula $n!$ indica il {\em fattoriale} di n).
-Trattandosi di una distribuzione discreta, si ha: $\sum_{k=0}^{N} P(k)=1$ ({\em condizione di normalizzazione}).
+(in questa formula $n!$ indica il {\em fattoriale\/} di n).
+Trattandosi di una distribuzione discreta, si ha: $\sum_{k=0}^{N} P(k)=1$ ({\em condizione di normalizzazione\/}).
 
 Esempi di processi descritti dalla distribuzione binomiale sono il lancio di una moneta ($p_{testa}=p_{croce}=\frac{1}{2}$), il lancio di un dado a 6 facce, l'estrazione di palline o bossoli da un'urna, l'estrazione (ripetuta) di una carta da un mazzo di carte, etc.
 
 Consideriamo per esempio il lancio di un dado a 6 facce;
-se definiamo come evento favorevole ({\em successo}) l'apparire di una determinata faccia, per esempio il numero 3,
+se definiamo come evento favorevole ({\em successo\/}) l'apparire di una determinata faccia, per esempio il numero 3,
 la probabilit\`a $p$ che si verifichi il singolo evento sar\`a $p=\frac{1}{6}$; la distribuzione binomiale descriver\`a la probabilit\`a che in $n$ lanci successivi di un singolo dado a 6 facce appaia esattamente $k$ volte la faccia con il numero 3.
 
 \vspace{2mm}
@@ -94,8 +94,8 @@ Il programma \texttt{lanci.c} deve:
 \item Chiedere all'utente di inserire il numero $n$ di dadi lanciati per ciascun lancio e il numero di lanci $N_{lanci}$;
 \item Chiamare una funzione esterna che simuli il lancio di un dado a 6 facce utilizzando un generatore di numeri casuali;
 \item Costruire un istogramma che contenga il numero di successi $k$ per ciascun lancio.
-\item Riscalare opportunamente l'istogramma ottenuto al punto precedente in modo che la {\em condizione di normalizzazione} della distribuzione sia soddisfatta.
-\item Salvare su un file l'istogramma riscalato. Per il punto successivo, pu\`o essere utile aprire il file in modalit\`a aggiungi ({\em append}), in modo da non sovrascrivere i dati a ogni esecuzione del file.
+\item Riscalare opportunamente l'istogramma ottenuto al punto precedente in modo che la {\em condizione di normalizzazione\/} della distribuzione sia soddisfatta.
+\item Salvare su un file l'istogramma riscalato. Per il punto successivo, pu\`o essere utile aprire il file in modalit\`a aggiungi ({\em append\/}), in modo da non sovrascrivere i dati a ogni esecuzione del file.
 \end{enumerate}
 
 
@@ -107,7 +107,7 @@ Il programma \texttt{lanci.c} deve:
 Confrontare (graficamente) i dati generati dai due programmi per gli stessi valori di $n$ e $k$.
 Qual \`e il numero minimo di lanci da usare nel secondo programma per ottenere un campionamento ragionevole
 della distribuzione di Bernoulli? Se si esegue il secondo programma pi\`u volte per uno stesso numero di lanci
-$N_{lanci}$, come cambia la distribuzione? Che cosa si pu\`o fare per diminuire le {\em fluttuazioni} nel risultato?
+$N_{lanci}$, come cambia la distribuzione? Che cosa si pu\`o fare per diminuire le {\em fluttuazioni\/} nel risultato?
 Scrivete le vostre osservazioni e risposte su un file \texttt{risposte.c}.
 
 
