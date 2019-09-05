@@ -64,13 +64,13 @@ dove $xx$ \`e il numero del gruppo a cui siete stati assegnati.
 #include <stdio.h>
 int main ()
 {
-  double tc,tf,conv,offset;
-  conv =5./9.;
+  double tc, tf, conv, offset;
+  conv = 5./9.;
   offset = 32.;
   printf("Inserisci la tempeatura in gradi Celsius \n");
-  scanf("%lf",&tc);
-  tf=tc/conv+offset;
-  printf("La temperatura in gradi Fahrenheit vale %5.2f gradi\n",tf);
+  scanf("%lf", &tc);
+  tf = tc/conv + offset;
+  printf("La temperatura in gradi Fahrenheit vale %5.2f gradi\n", tf);
 }
 \end{lstlisting}
 
@@ -81,7 +81,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 plt.title('Un primo plot con Python')
 x, y = np.loadtxt('temp.dat', unpack=True)
-plt.plot(x,y, 'x',label='Loaded from file!')
+plt.plot(x ,y, 'x', label='Loaded from file!')
 plt.show()
 \end{lstlisting}
 \vspace{2mm}
