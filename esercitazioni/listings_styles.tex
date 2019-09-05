@@ -5,7 +5,32 @@
 %i seguenti comandi funzionano con lualatex (si possono usare tutti i font di sistema come in vim o nel terminale!)
 \usepackage{fontspec}
 %\setmonofont{Inconsolatazi4}
-\setmonofont[Scale=0.85]{Hack}
+%
+% 0 OfficeCodePro 1=inconsolata 2=Hack
+\ifcase 0 %font 0
+\setmonofont[Scale=0.85,
+  ItalicFont=OfficeCodePro-RegularItalic,
+  BoldFont=OfficeCodePro-Bold,
+  BoldItalicFont=OfficeCodePro-BoldItalic,
+  UprightFont=OfficeCodePro-Regular]
+  {OfficeCodePro}
+\or% font 1
+\setmonofont[Scale=0.85,
+  ItalicFont=inconsolatalgcitalic,
+  BoldFont=inconsolatalgcbold,
+  BoldItalicFont=inconsolatalgcitalic,
+  UprightFont=inconsolatalgc]
+  {inconsolatagc}
+\else% else
+%
+%imposto il font per lo stile typewriter (si possono anche indicare le variani, i.e. italic, bold, bolditalic)
+\setmonofont[Scale=0.85,
+  ItalicFont=Hack-Italic,
+  BoldFont=Hack-Bold,
+  BoldItalicFont=Hack-BoldItalic,
+  UprightFont=Hack-Regular]
+  {Hack}
+\fi
 %
 \usepackage[T1]{fontenc}
 \usepackage{listingsutf8}
@@ -28,18 +53,18 @@
   backgroundcolor=\color{panna},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
 % basicstyle=\footnotesize\ttfamily,
   basicstyle=\ttfamily,
-  belowskip=-0.2 \baselineskip,
+  belowskip=-0.2\baselineskip,
 % basicstyle=\footnotesize,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-%  breaklines=true,                 % sets automatic line breaking
+% breaklines=true,                 % sets automatic line breaking
   captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{verdeoliva},    % comment style
+  commentstyle=\itshape\color{verdeoliva},    % comment style
 % deletekeywords={},            % if you want to delete keywords from the given language
 % escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
 % firstnumber=1000,                % start line enumeration with line 1000
   frame=single,	                   % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{blue},       % keyword style
+  keywordstyle=\bfseries\color{blue},       % keyword style
 % language=Octave,                 % the language of the code
 % morekeywords={*,},            % if you want to add more keywords to the set
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
