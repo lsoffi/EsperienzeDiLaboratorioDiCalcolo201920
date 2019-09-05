@@ -1,0 +1,3 @@
+* installare uno dei seguenti font: Hack, OfficeCodePro o inconsolatalgc
+* compilare i programmi con lualatex o xelatex (che supportano pienamente l'utf8, testato con lualatex)
+
