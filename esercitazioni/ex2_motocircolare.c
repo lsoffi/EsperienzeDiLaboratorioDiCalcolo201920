@@ -23,12 +23,12 @@ int main(int argc, char **argv)
   y = R*sin(w*t);
   printf("t=%.4f x=%.5f y=%.5f\n", t, x, y);
   /* blocco interattivo */
-  printf("Immetti il tempo t:");
+  printf("Immetti il tempo t: ");
   scanf("%lf", &t);
   x = R*cos(w*t);
   y = R*sin(w*t);
-  printf("t=%.4f x=%.5f y=%.5f\n", t, x, y);
- 
+  //printf("(x,y)= %.5f,%.5f\n", x, y);
+  printf("%.5f %.5f %.5f\n", t, x, y);
   return 0;// dice al sistema operativo che non ci sono errori
 }
 
