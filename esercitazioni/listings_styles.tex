@@ -23,7 +23,7 @@
   {inconsolatagc}
 \else% else
 %
-%imposto il font per lo stile typewriter (si possono anche indicare le variani, i.e. italic, bold, bolditalic)
+%imposto il font per listings (si possono anche indicare le varianti, i.e. italic, bold, bolditalic)
 \setmonofont[Scale=0.85,
   ItalicFont=Hack-Italic,
   BoldFont=Hack-Bold,
@@ -53,13 +53,13 @@
   %       {ó}{{\'o}}1,
   backgroundcolor=\color{panna},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
 % basicstyle=\footnotesize\ttfamily,
-  basicstyle=\ttfamily,
+  basicstyle=\ttfamily,            % è selezionato all'inizio di ogni listing
   belowskip=-0.2\baselineskip,
 % basicstyle=\footnotesize,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
 % breaklines=true,                 % sets automatic line breaking
   captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\itshape\color{verdeoliva},    % comment style
+  commentstyle=\itshape\color{verdeoliva}, % comment style (nota: all'inizio del listing seleziona \ttfamily, perciò qui seleziona la variante italic)
 % deletekeywords={},            % if you want to delete keywords from the given language
 % escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
 % firstnumber=1000,                % start line enumeration with line 1000
