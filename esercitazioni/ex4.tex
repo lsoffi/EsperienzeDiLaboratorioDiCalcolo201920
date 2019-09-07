@@ -46,8 +46,8 @@ funzioni di generazione di numeri casuali, simuli una mano di una partita di
 roulette (lancio e risultato). Il programma deve:
 \begin{enumerate}
 \item Generare un numero casuale $X$ compreso tra 1 e 36.
-\item Riconoscere se il numero generato $X$ \`e pari (E) o dispari (O), minore
-o uguale di 18 (M) o maggiore di 19 (P).
+\item Riconoscere se il numero generato $X$ \`e pari (E) o dispari (O) e minore
+o uguale di 18 (M) oppure maggiore di 18 (P).
 \item Stampare il risultato nel formato: \texttt{$X$ E/O M/P}.
 \end{enumerate}
 
@@ -117,23 +117,24 @@ Il vostro programma dovr\`a simulare tutte le fasi della partita; a ogni mano do
 Le librerie standard del C dispongono di diverse funzioni per la generazione di numeri casuali.
 La funzione \texttt{rand} di \texttt{stdlib.h} restituisce un numero intero casuale compreso tra 0 e il valore \texttt{RAND\_MAX}, che dipende dall'architettura del processore.
 
-\textbf{$\RHD$} Per generare un numero casuale {\bf compreso tra 0 e 1} bisogna dividere il risultato di \texttt{rand()} per
+\textbf{$\RHD$} Per generare un numero casuale nell'intervallo $ [0,1] $ 
+bisogna dividere il risultato di \texttt{rand()} per
 \texttt{RAND\_MAX}:
 \\
-\texttt{x=(double) rand()/{RAND\_MAX}};
+\lstinline[language=c]{x=((double) rand())/RAND_MAX};
 \\
 (L'istruzione (double) esegue il {\em casting} (conversione) del risultato in formato \texttt{double}.
 
 \textbf{$\RHD$} Per generare un numero {\bf razionale} casuale {\bf compreso tra 0 e N} si moltiplica l'espressione precedente per N:
 \\
-\texttt{x=(double) rand()/{RAND\_MAX}*N};
+\lstinline[language=c]{x=(((double) rand())/RAND_MAX)*N};
 \\
 (L'istruzione (double) esegue il {\em casting} (conversione) del risultato in formato \texttt{double}.
 
 \textbf{$\RHD$} Per generare un numero {\bf intero} casuale {\bf compreso tra 1 e N} si usa la propriet\`a della funzione
 {\bf modulo} (\texttt{\%}):
 \\
-\texttt{i=rand() \% N + 1};
+\lstinline[language=c]{i=rand() % N + 1};
 
 {\bf NB!} Prima di chiamare la funzione \texttt{rand} all'interno di un programma bisogna inizializzare il {\em seme} (seed) della sequenza di numeri casuali attraverso la funzione \texttt{srand(seme)}; \texttt{seme} \`e un numero intero. Due sequenze inizializzate con lo stesso seme produrranno risultati identici. Se si vuole evitare che la sequenza di numeri casuali si ripeta in modo sempre uguale, si inizializza il seme utilizzando la funzione \texttt{time} della libreria
 nativa \texttt{time.h}. Questo si ottiene inserendo all'inizio del programma, prima della chiamata della funzione \texttt{rand}, l'istruzione:
