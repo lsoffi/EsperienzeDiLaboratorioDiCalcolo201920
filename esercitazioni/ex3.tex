@@ -46,18 +46,18 @@ punti equispaziati lungo l'asse $x$, nell'intervallo $x \in \left[-15,15 \right]
 Si noti che:
 \begin{enumerate}
 \item  {\bf Il numero di punti} $N_{p}$ deve essere sufficiente a dar vita ad un grafico ragionevolmente continuo delle funzione ($N_p \ge 100$);
-\item Se la funzione viene calcolata nel punto $x=0$ \`e probabile che il programma restituisca il valore $nan$ (\emph{not a number}), 
+\item Se la funzione viene calcolata nel punto $x=0$ il programma restituisce il valore NAN (\emph{not a number}), 
 dal momento che si tratta di valutare un'espressione del tipo $\frac{0}{0}$. Il limite per $x \to 0$ di 
 $\frac{\sin(x)}{x}$ \`e noto e vale: $\lim_{x \to 0} \frac{\sin(x)}{x} = 1$.
- Inserire nel programma un'opportuna  istruzione \texttt{IF} che corregga il risultato numerico con il valore analitico corretto in x=0.
+Inserire nel programma un'opportuna  istruzione \lstinline[language=c]{if} che corregga il risultato numerico con il valore analitico corretto in $x=0$.
 \item Scrivere i risultati su un file \texttt{sinxx.dat} di $N_p$ righe e 2 colonne, nella forma: $x,y$. Per compiere questa operazione potete o incollare manualmente l'output dello schermo su un file vuoto, o {\em ridirigere\/} l'output
 del vostro programma su un file con il comando:
 \\
 \begin{lstlisting}[numbers=none,language=bash]
 ./programma.x > file_out
 \end{lstlisting}
-\item Creare con \texttt{gnuplot} un grafico della funzione $\frac{\sin(x)}{x}$
-utilizzando i punti calcolati e salvarlo sul file \texttt{sinxx.gif}. 
+\item Creare con \texttt{python} un grafico della funzione $\frac{\sin(x)}{x}$
+utilizzando i punti calcolati e salvarlo sul file \texttt{sinxx.png}. 
  Quanti zeri ci sono nell'intervallo $\left[ -15,15 \right]$? Dove sono?
 \end{enumerate}
 
