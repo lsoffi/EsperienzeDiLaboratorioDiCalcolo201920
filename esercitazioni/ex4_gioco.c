@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
   fine=0;
   while (!fine)
     {
-      printf("Numero giocate (10/20)? ");
+      printf("Numero mani (10/20)? ");
       fine=1;
       res=scanf("%d", &N);
       if (res < 1)
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
       while (!fine)
         {
           fine=1;
-          printf("\nGiocata N. %d\n", i+1);
+          printf("\nMano N. %d\n", i+1);
           printf("Quanto vuoi puntare (Hai %4.2f euro)? ", pocket);
           res=scanf(" %lf", &puntata);
           if (res < 1)
