@@ -7,8 +7,7 @@ int main(int argc, char *argv[])
   int N=20; 
   double ptot,pocket=0.0, puntata;
   char giocata;
-  char dummy[256];
-  int fine, vinto, res, ngioc;
+  int c, fine, vinto, res, ngioc;
   int i, n;
   srand(0);
   pocket=100.0;
@@ -18,17 +17,26 @@ int main(int argc, char *argv[])
       printf("Numero mani (10/20)? ");
       fine=1;
       res=scanf("%d", &N);
+      if (ferror(stdin)||feof(stdin))
+        {
+          // qui ci arriva se si preme CTRL-D = EOF
+          printf("\n");
+          clearerr(stdin);
+          fine=0;
+          continue;
+        }
+          
       if (res < 1)
         {
           printf("Problema nella conversione\n");
-          scanf(" %256s", dummy);
           fine=0;
         }
-      if (N!=10 && N!=20)
+      else if (N!=10 && N!=20)
         {
           printf("Devi scegliere 10 o 20 giocate!\n");
           fine=0;
         }
+      while ((c=getchar())!='\n'); // svuota il buffer di tutti i caratteri eccetto '\n'=newline
     }
   ptot=0.0;
   for (i = 0; i < N; ++i) 
@@ -42,19 +50,28 @@ int main(int argc, char *argv[])
           printf("\nMano N. %d\n", i+1);
           printf("Quanto vuoi puntare (Hai %4.2f euro)? ", pocket);
           res=scanf(" %lf", &puntata);
+          if (ferror(stdin)||feof(stdin))
+            {
+              // qui ci arriva se si preme CTRL-D = EOF o se c'è un error
+              printf("\n");
+              clearerr(stdin);
+              fine=0;
+              continue;
+            }
+ 
           if (res < 1)
             {
               printf("Problema nella conversione\n");
-              scanf(" %256s", dummy);
-              //printf("dummy[0]=%uc dummy[1]=%uc\n", dummy[0], dummy[1]);
               fine=0;
-              continue;
             }  
-          if (puntata < 0 || puntata > pocket)
+          else if (puntata < 0 || puntata > pocket)
             {
               printf("Puntata non valida!\n");
               fine=0; 
             }
+          else
+            printf("ok punti %4.2f\n", puntata);
+          while ((c=getchar())!='\n'); // svuota il buffer di tutti i caratteri eccetto '\n'=newline
         }
       ptot+=puntata;
       pocket -= puntata;
@@ -64,14 +81,20 @@ int main(int argc, char *argv[])
           printf("Scegli il tipo di giocata (E/O/M/P):");
           // il precedente carriage return rimane nel buffer per quello va messo lo spazio
           res=scanf(" %c", &giocata);
+          if (ferror(stdin)||feof(stdin))
+            {
+              // qui ci arriva se si preme CTRL-D = EOF o se c'è un error
+              printf("\n");
+              clearerr(stdin);
+              fine=0;
+              continue;
+            }
           if (res < 0)
             {     
               printf("Problema nella conversione\n");
-              scanf(" %256s", dummy);
-              continue;
             }         
           //printf("giocata=%c\n",giocata);
-          if (giocata=='E')
+          else if (giocata=='E')
             {
               ngioc=0;
             }
@@ -92,6 +115,7 @@ int main(int argc, char *argv[])
               printf("giocata non valida, riprova...\n");
               ngioc=-1;
             }
+          while ((c=getchar())!='\n'); // svuota il buffer di tutti i caratteri eccetto '\n'=newline
         }
       n=rand()%nmax + 1;
       vinto=0;
