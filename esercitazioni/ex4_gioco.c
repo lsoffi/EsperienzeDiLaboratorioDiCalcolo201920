@@ -46,7 +46,9 @@ int main(int argc, char *argv[])
             {
               printf("Problema nella conversione\n");
               scanf(" %256s", dummy);
+              //printf("dummy[0]=%uc dummy[1]=%uc\n", dummy[0], dummy[1]);
               fine=0;
+              continue;
             }  
           if (puntata < 0 || puntata > pocket)
             {
@@ -57,12 +59,18 @@ int main(int argc, char *argv[])
       ptot+=puntata;
       pocket -= puntata;
       ngioc=-1;
-      while (ngioc <0)
+      while (ngioc < 0)
         {
           printf("Scegli il tipo di giocata (E/O/M/P):");
-          scanf(" %c",&giocata);
-
-          printf("giocata=%c\n",giocata);
+          // il precedente carriage return rimane nel buffer per quello va messo lo spazio
+          res=scanf(" %c", &giocata);
+          if (res < 0)
+            {     
+              printf("Problema nella conversione\n");
+              scanf(" %256s", dummy);
+              continue;
+            }         
+          //printf("giocata=%c\n",giocata);
           if (giocata=='E')
             {
               ngioc=0;
@@ -81,8 +89,7 @@ int main(int argc, char *argv[])
             }
           else
             {
-              scanf(" %256s", dummy);
-              printf("giocata non valida\n");
+              printf("giocata non valida, riprova...\n");
               ngioc=-1;
             }
         }
