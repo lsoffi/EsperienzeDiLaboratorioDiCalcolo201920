@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
   char giocata;
   char dummy[256];
   int fine, vinto, res, ngioc;
-  int i, n, nE=0, nM=0;
+  int i, n;
   srand(0);
   pocket=100.0;
   fine=0;
