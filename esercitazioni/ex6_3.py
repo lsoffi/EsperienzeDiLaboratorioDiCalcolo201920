@@ -15,4 +15,5 @@ x, y = np.loadtxt('istogramma.dat', unpack=True)
 plt.plot(x,y, 'bx-',label='istogramma')
 x, y = np.loadtxt('bernoulli_20.dat', unpack=True)
 plt.plot(x,y, 'ro-',label='bernoulli')
+ax.legend();
 plt.show()
