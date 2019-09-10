@@ -83,6 +83,8 @@ import numpy as np
 plt.title('Un primo plot con Python')
 x, y = np.loadtxt('temp.dat', unpack=True)
 plt.plot(x ,y, 'x', label='Loaded from file!')
+plt.xlim((-10,50)) # intervallo lungo asse x
+plt.ylim((10,125)) # intervallo lungo asse y
 plt.show()
 \end{lstlisting}
 \vspace{2mm}
