@@ -84,7 +84,7 @@ ed effettuare un'analisi dell'andamento dell'istogramma dei risultati.
 %\\
 %(\texttt{nome del bin  |   numero di occorrenze})
 %\\
-si usa il comando \lstinline[language=Python]{plt.bar(x,y,fill=True)}.
+si usa il comando \lstinline[language=Python]!plt.bar(x,y,fill=True)!.
 \item Generare un certo numero di file di nome \texttt{istoxx.dat} che contengano l'istogramma dei risultati generati dal programma \texttt{roulette.c}, per numeri di lanci diversi: 10, 100, 10.000, 100.000.
  Per paragonare run con un numero diverso di lanci, invece del numero di occorrenze il file dovr\`a contenere
 la {\em frequenza} con cui si \`e verificato ciascun risultato.
@@ -121,13 +121,13 @@ La funzione \texttt{rand} di \texttt{stdlib.h} restituisce un numero intero casu
 bisogna dividere il risultato di \texttt{rand()} per
 \texttt{RAND\_MAX}:
 \\
-\lstinline[language=c]{x=((double) rand())/RAND_MAX};
+\lstinline[language=c]!x=((double) rand())/RAND_MAX!;
 \\
-(L'istruzione (double) esegue il {\em casting} (conversione) del risultato in formato \texttt{double}.
+L'istruzione (double) esegue il {\em casting\/} (conversione) del risultato in formato \texttt{double}.
 
 \textbf{$\RHD$} Per generare un numero {\bf razionale} casuale {\bf compreso tra 0 e N} si moltiplica l'espressione precedente per N:
 \\
-\lstinline[language=c]{x=(((double) rand())/RAND_MAX)*N};
+\lstinline[language=c]!x=(((double) rand())/RAND_MAX)*N!;
 \\
 (L'istruzione (double) esegue il {\em casting} (conversione) del risultato in formato \texttt{double}.
 
