@@ -41,7 +41,7 @@ discreta che descrive la probabilit\`a che in $n$ esperimenti si verifichi $k$ v
 con probabilit\`a individuale $p$.
 La distribuzione \`e data da:
 \[
-P(k)=\frac{n!}{\nu! (n-k)!}p^{k}(1-p)^{n-k},
+P(k)=\frac{n!}{k! (n-k)!}p^{k}(1-p)^{n-k},
 \]
 (in questa formula $n!$ indica il {\em fattoriale\/} di n).
 Trattandosi di una distribuzione discreta, si ha: $\sum_{k=0}^{N} P(k)=1$ ({\em condizione di normalizzazione\/}).
@@ -74,7 +74,7 @@ una chiamata a una funzione esterna, che implementi la funzione fattoriale.
 $n=2$; $n=4$; $n=10$; $n=20$.
 Che cosa si nota all'aumentare di $n$? Perch\`e?
 Salvate i dati usati per le figure su diversi file \texttt{bernoulli\_n.dat} e i grafici su file immagine
-\texttt{bernoulli\_n.gif}.
+\texttt{bernoulli\_n.png}.
 \end{enumerate}
 
 \hrule
@@ -92,9 +92,10 @@ Il programma \texttt{lanci.c} deve:
 \begin{enumerate}
 \item Chiedere all'utente di inserire il numero $n$ di dadi lanciati per ciascun lancio e il numero di lanci $N_{lanci}$;
 \item Chiamare una funzione esterna che simuli il lancio di un dado a 6 facce utilizzando un generatore di numeri casuali;
-\item Costruire un istogramma che contenga il numero di successi $k$ per ciascun lancio.
+\item Costruire un istogramma relativo al numero di volte che si sono avuti $k$ successi in un lancio.
 \item Riscalare opportunamente l'istogramma ottenuto al punto precedente in modo che la {\em condizione di normalizzazione\/} della distribuzione sia soddisfatta.
-\item Salvare su un file l'istogramma riscalato. Per il punto successivo, pu\`o essere utile aprire il file in modalit\`a aggiungi ({\em append\/}), in modo da non sovrascrivere i dati a ogni esecuzione del file.
+\item Salvare su un file \texttt{istogramma.dat} l'istogramma riscalato. 
+  %Per il punto successivo, pu\`o essere utile aprire il file in modalit\`a aggiungi ({\em append\/}), in modo da non sovrascrivere i dati a ogni esecuzione del file.
 \end{enumerate}
 
 
@@ -107,6 +108,6 @@ Confrontare (graficamente) i dati generati dai due programmi per gli stessi valo
 Qual \`e il numero minimo di lanci da usare nel secondo programma per ottenere un campionamento ragionevole
 della distribuzione di Bernoulli? Se si esegue il secondo programma pi\`u volte per uno stesso numero di lanci
 $N_{lanci}$, come cambia la distribuzione? Che cosa si pu\`o fare per diminuire le {\em fluttuazioni\/} nel risultato?
-Scrivete le vostre osservazioni e risposte su un file \texttt{risposte.c}.
+Scrivete le vostre osservazioni e risposte su un file \texttt{risposte.txt}.
 
 \end{document}
