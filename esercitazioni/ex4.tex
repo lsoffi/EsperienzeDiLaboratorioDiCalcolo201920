@@ -129,12 +129,12 @@ L'istruzione (double) esegue il {\em casting\/} (conversione) del risultato in f
 \\
 \lstinline[language=c]!x=(((double) rand())/RAND_MAX)*N!;
 \\
-(L'istruzione (double) esegue il {\em casting} (conversione) del risultato in formato \texttt{double}.
+L'istruzione (double) esegue il {\em casting} (conversione) del risultato in formato \texttt{double}.
 
 \textbf{$\RHD$} Per generare un numero {\bf intero} casuale {\bf compreso tra 1 e N} si usa la propriet\`a della funzione
 {\bf modulo} (\texttt{\%}):
 \\
-\lstinline[language=c]{i=rand() % N + 1};
+\lstinline[language=c]!i=rand() % N + 1!;
 
 {\bf NB!} Prima di chiamare la funzione \texttt{rand} all'interno di un programma bisogna inizializzare il {\em seme} (seed) della sequenza di numeri casuali attraverso la funzione \texttt{srand(seme)}; \texttt{seme} \`e un numero intero. Due sequenze inizializzate con lo stesso seme produrranno risultati identici. Se si vuole evitare che la sequenza di numeri casuali si ripeta in modo sempre uguale, si inizializza il seme utilizzando la funzione \texttt{time} della libreria
 nativa \texttt{time.h}. Questo si ottiene inserendo all'inizio del programma, prima della chiamata della funzione \texttt{rand}, l'istruzione:
