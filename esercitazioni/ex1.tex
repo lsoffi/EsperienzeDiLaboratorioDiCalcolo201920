@@ -138,6 +138,11 @@ In questo modo viene aggiunto il plot della retta \texttt{y=x} nell'intervallo \
   \item Utilizzando le funzionalit\`a in {\it python\/} appena descritte, disegnare la retta che interpola i dati generati dal programma \texttt{temp.x}.
 \item 
 %Utilizzando l'{\em help} di {\em gnuplot}, che si invoca con il comando \texttt{help},
-  Inserire una legenda nel grafico per la retta interpolante e riscalare gli assi $x$ e $y$ in modo che vadano dalla pi\`u piccola alla pi\`u grande delle temperature scelte. 
+  Inserire una legenda nel grafico per la retta interpolante aggiungendo nel programma \texttt{python} prima di \lstinline[language=python]{plt.show()} i seguenti comandi:
+\begin{lstlisting}[language=python]
+   ax = plt.gca()
+   ax.legend()
+\end{lstlisting}
+  e riscalare gli assi $x$ e $y$ in modo che vadano dalla pi\`u piccola alla pi\`u grande delle temperature scelte. 
 \end{enumerate}  
 \end{document}
