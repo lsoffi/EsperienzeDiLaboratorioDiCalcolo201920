@@ -1,0 +1,39 @@
+26/9/2018: Prima lezione: Presentazione del corso (slides in pdf).
+
+27/9/2018: Seconda lezione: Sistemi di numerazione.
+
+2/10/2018: Terza lezione: Rappresentazione di numeri e altre entita’ su un computer (parte I).
+
+3/10/2018: Quarta lezione: Rappresentazione di numeri e altre entita’ su un computer (parte I).
+
+9/10/2018: Quinta lezione: Linguaggi di programmazione, Compilatori e Interpreti.
+
+10/10/2018: Sesta lezione: Il linguaggio C: elementi di base.
+
+16/10/2018: Settima Lezione: Elementi di gestione di flusso di programmi: il costrutto if ()  then else.
+
+17/10/2018: Ottava Lezione: Elementi di gestione di flusso di programmi: iterazioni.
+
+24/10/2018: Nona Lezione: Algoritmo di bisezione.
+
+25/10/2018: Decima lezione: Strutture di dati; array; algoritmi di ordinamento.
+
+7/11/2018: Undicesima lezione:Numeri casuali. Introduzione ai puntatori.
+
+8/11/2018: Dodicesima Lezione:Ancora sui puntatori; I/O da file.
+
+14/11/2018: Tredicesima Lezione:Esercizio in classe sui numeri casuali.
+
+15/11/2018: Quattordicesima lezione:Gestione e formattazione di stringhe di caratteri; Introduzione alle funzioni.
+
+21/11/2018: Quindicesima lezione: Ripasso sugli array (C. de Michele).
+
+22/11/2018: Sedicesima lezione: Ripasso sull’algoritmo Bubblesort e I/O da file (C. de Michele).
+
+28/11/2018: Diciassettesima lezione: funzioni.
+
+29/11/2018: Diciottesima lezione: funzioni (seconda parte).
+
+5/12/2018: Diciannovesima lezione: Correzione del programma gioco dell’oca.
+
+6/12/2018: Ventesima lezione: Ancora sui puntatori; funzioni di funzione; metodi di integrazione numerici.
