@@ -29,7 +29,7 @@
 
 \begin{mdframed}[backgroundcolor=panna]
   Lo scopo della quarta esercitazione di laboratorio \`e di fare pratica con
-  le istruzioni di controllo di flusso \texttt{if\ldots (then) \ldots else}; \texttt{while \ldots do} e le funzioni di generazione di numeri casuali ({\em random}), scrivendo un programma che simula il gioco della roulette.
+  le istruzioni di controllo di flusso \texttt{if\ldots (then) \ldots else}; \texttt{while \ldots do} e le funzioni di generazione di numeri casuali ({\em random\/}), scrivendo un programma che simula il gioco della roulette.
   \end{mdframed}
 %\vspace{1mm}
 %
@@ -55,18 +55,18 @@ o uguale di 18 (M) oppure maggiore di 18 (P).
 \vspace{2mm}
 \textbf{$\RHD$ Seconda parte:}
 Partendo dal programma precedente, scrivere un programma chiamato \texttt{roulette.c} che
-invece che un singolo lancio simuli pi\`u lanci --  ($N \ge 100$).
+invece che un singolo lancio simuli pi\`u lanci ---  ($N \ge 100$).
 \begin{enumerate}
-\item Alla fine degli $N$ lanci, stampare sullo schermo la {\em frequenza}
+\item Alla fine degli $N$ lanci, stampare sullo schermo la {\em frequenza\/}
 con cui si \`e verificato ciascun risultato (E/O/M/P): la frequenza
 \`e quella attesa o si discosta dal valore aspettato? Verificare come
-varia la frequenza al variare del parametro $N$ - numero di lanci.
-\item Costruire un {\em array} di 36 elementi che contenga il numero di
+varia la frequenza al variare del parametro $N$ --- numero di lanci.
+\item Costruire un {\em array\/} di 36 elementi che contenga il numero di
 volte in cui  in un lancio  si \`e verificato ciascun risultato tra 1 e 36.
 \item Scrivere il contenuto dell'array su di un file
   \texttt{isto.dat} che contenga
-su due colonne i numeri da uno a 36 ({\em bin}) e le relative occorrenze.
-Questi dati serviranno per costruire un {\em istogramma} dei risultati.
+su due colonne i numeri da uno a 36 ({\em bin\/}) e le relative occorrenze.
+Questi dati serviranno per costruire un {\em istogramma\/} dei risultati.
 Il file pu\`o essere creato a mano, o redirigendo l'output del programma
 su un file con il comando \texttt{./programma.x > fileout}.
 \end{enumerate}
@@ -87,9 +87,9 @@ ed effettuare un'analisi dell'andamento dell'istogramma dei risultati.
 si usa il comando \lstinline[language=Python]!plt.bar(x,y,fill=True)!.
 \item Generare un certo numero di file di nome \texttt{istoxx.dat} che contengano l'istogramma dei risultati generati dal programma \texttt{roulette.c}, per numeri di lanci diversi: 10, 100, 10.000, 100.000.
  Per paragonare run con un numero diverso di lanci, invece del numero di occorrenze il file dovr\`a contenere
-la {\em frequenza} con cui si \`e verificato ciascun risultato.
+la {\em frequenza\/} con cui si \`e verificato ciascun risultato.
 \item Formattando opportunamente il grafico, paragonate gli istogrammi ottenuti per diversi valori di $N$. Che cosa si
-pu\`o dire sulla distribuzione dei risultati in funzione di $N$? Il risultato \`e corerente con le vostre aspettative? Se s\`i/no, perch\'e? Salvare il grafico su un nuovo file (\texttt{isto2.gif}) e scrivere le risposte sul file \texttt{risposte.txt}.
+pu\`o dire sulla distribuzione dei risultati in funzione di $N$? Il risultato \`e corerente con le vostre aspettative? Se sì/no, perch\'e? Salvare il grafico su un nuovo file (\texttt{isto2.gif}) e scrivere le risposte sul file \texttt{risposte.txt}.
 \end{enumerate}
 
 
@@ -125,24 +125,21 @@ bisogna dividere il risultato di \texttt{rand()} per
 \\
 L'istruzione (double) esegue il {\em casting\/} (conversione) del risultato in formato \texttt{double}.
 
-\textbf{$\RHD$} Per generare un numero {\bf razionale} casuale {\bf compreso tra 0 e N} si moltiplica l'espressione precedente per N:
+\textbf{$\RHD$} Per generare un numero {\bf razionale} casuale {\bf compreso tra 0 e N} si moltiplica l'espressione precedente per N:\@
 \\
 \lstinline[language=c]!x=(((double) rand())/RAND_MAX)*N!;
 \\
-L'istruzione (double) esegue il {\em casting} (conversione) del risultato in formato \texttt{double}.
+L'istruzione (double) esegue il {\em casting\/} (conversione) del risultato in formato \texttt{double}.
 
 \textbf{$\RHD$} Per generare un numero {\bf intero} casuale {\bf compreso tra 1 e N} si usa la propriet\`a della funzione
 {\bf modulo} (\texttt{\%}):
 \\
 \lstinline[language=c]!i=rand() % N + 1!;
 
-{\bf NB!} Prima di chiamare la funzione \texttt{rand} all'interno di un programma bisogna inizializzare il {\em seme} (seed) della sequenza di numeri casuali attraverso la funzione \texttt{srand(seme)}; \texttt{seme} \`e un numero intero. Due sequenze inizializzate con lo stesso seme produrranno risultati identici. Se si vuole evitare che la sequenza di numeri casuali si ripeta in modo sempre uguale, si inizializza il seme utilizzando la funzione \texttt{time} della libreria
+{\bf NB!} Prima di chiamare la funzione \texttt{rand} all'interno di un programma bisogna inizializzare il {\em seme\/} (seed) della sequenza di numeri casuali attraverso la funzione \texttt{srand(seme)}; \texttt{seme} \`e un numero intero. Due sequenze inizializzate con lo stesso seme produrranno risultati identici. Se si vuole evitare che la sequenza di numeri casuali si ripeta in modo sempre uguale, si inizializza il seme utilizzando la funzione \texttt{time} della libreria
 nativa \texttt{time.h}. Questo si ottiene inserendo all'inizio del programma, prima della chiamata della funzione \texttt{rand}, l'istruzione:
 \\
 \texttt{srand(time(NULL));}
 \\
 \end{mdframed}
-
-
-
 \end{document}
