@@ -34,7 +34,7 @@ int main(int argc, char**argv)
   printf("minimo  numero rappresentabile=\t\t%G\n", DBL_MIN);
     
   press_key();
-  printf("ERRORE DI ARROTONDAMENTO\n");
+  printf("ERRORE DI ARROTONDAMENTO\n\n");
   double a, b, c;
   a = 100000000;
   b = 1;
@@ -45,22 +45,22 @@ int main(int argc, char**argv)
   printf("c=%.0f\n", c);
 
   press_key();
-  printf("1/(a+b-c)=%G\n", 1/(flt(a)+flt(b)-flt(c)));
+  printf("1/(a+b-c)= %G\n", 1/(flt(a)+flt(b)-flt(c)));
 
   press_key();
-  printf("1/(a-c+b)=%G\n", 1/(flt(a) - flt(c) + flt(b)));
+  printf("1/(a-c+b)= %G\n", 1/(flt(a) - flt(c) + flt(b)));
 
   printf("\nPremi un tasto per continuare...\n");
-  printf("\nOVERFLOW\n");
-  a = 7E38;
-  b = 7E38;
+  printf("\nOVERFLOW\n\n");
+  a = 2E38;
+  b = 2E38;
   c = 1E20;
   printf("a=%.0e\n", a);
   printf("b=%.0e\n", b);
   printf("c=%.0e\n", c);
-  printf("(a+b)/c=%G\n", (flt(a)+flt(b))/flt(c));
+  printf("(a+b)/c= %G\n", (flt(a)+flt(b))/flt(c));
 
   press_key();
-  
+  printf("a/c+b/c= %G\n", flt(a)/flt(c)+flt(b)/flt(c));
   return 0;
 }
