@@ -24,14 +24,14 @@ int main(int argc, char**argv)
 {
   init_press_key();
   printf("Numeri in singola precisione (float):\n");
-  printf("epsilon (ovvero differenza minima)=\t%G\n", FLT_EPSILON);
-  printf("massimo numero rappresentabile=\t\t%G\n", FLT_MAX);
-  printf("minimo  numero rappresentabile=\t\t%G\n", FLT_MIN);
-   
+  printf("epsilon (ovvero differenza minima)=\t%.7G\n", FLT_EPSILON);
+  printf("massimo numero rappresentabile=\t\t%.7G\n", FLT_MAX);
+  printf("minimo  numero rappresentabile=\t\t%.7G\n", FLT_MIN*FLT_EPSILON);
+  
   printf("\nNumeri in doppia precisione (double):\n");
-  printf("epsilon (ovvero differenza minima)=\t%G\n", DBL_EPSILON);
-  printf("massimo numero rappresentabile=\t\t%G\n", DBL_MAX);
-  printf("minimo  numero rappresentabile=\t\t%G\n", DBL_MIN);
+  printf("epsilon (ovvero differenza minima)=\t%.7G\n", DBL_EPSILON);
+  printf("massimo numero rappresentabile=\t\t%.7G\n", DBL_MAX);
+  printf("minimo  numero rappresentabile=\t\t%.7G\n", DBL_MIN*DBL_EPSILON);
     
   press_key();
   printf("ERRORE DI ARROTONDAMENTO\n\n");
@@ -55,12 +55,25 @@ int main(int argc, char**argv)
   a = 2E38;
   b = 2E38;
   c = 1E20;
-  printf("a=%.0e\n", a);
-  printf("b=%.0e\n", b);
-  printf("c=%.0e\n", c);
+  printf("a=%.0e\n", flt(a));
+  printf("b=%.0e\n", flt(b));
+  printf("c=%.0e\n", flt(c));
   printf("(a+b)/c= %G\n", (flt(a)+flt(b))/flt(c));
 
   press_key();
   printf("a/c+b/c= %G\n", flt(a)/flt(c)+flt(b)/flt(c));
+
+  printf("\nUNDERFLOW\n\n");
+  a = 5*FLT_MIN*FLT_EPSILON;
+  b = 5*FLT_MIN*FLT_EPSILON;
+  c = 10.0;
+  printf("a=%G\n", flt(a));
+  printf("b=%G\n", flt(b));
+  printf("c=%G\n", flt(c));
+  printf("a/c+b/c= %G\n", flt(a)/flt(c)+flt(b)/flt(c));
+
+  press_key();
+  printf("(a+b)/c= %G\n", (flt(a)+flt(b))/flt(c));
+
   return 0;
 }
