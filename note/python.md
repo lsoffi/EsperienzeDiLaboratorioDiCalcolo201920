@@ -63,7 +63,7 @@ Alcune volte, soprattutto nel caso di librerie a cui si accede spesso, può far 
 
 ## Algebra lineare (e non solo): la libreria `numpy`
 
-La libreria `numpy` permette di leggere, manipolare e stampare facilmente vettori, matrici e, più in generale, tensori di qualunque ordine. Nonostante non faccia parte della libreria standard di Python, `numpy` è *de facto* lo standard per lavorare con oggetti di questo tipo.
+La libreria `numpy` (solitamente importata con l'*alias* `np`) permette di leggere, manipolare e stampare facilmente vettori, matrici e, più in generale, tensori di qualunque ordine. Nonostante non faccia parte della libreria standard di Python, `numpy` è *de facto* lo standard per lavorare con oggetti di questo tipo.
 
 ### Gli *array* di `numpy`
 
@@ -81,6 +81,47 @@ Durante il corso faremo un uso molto limitato delle potenzialità di `numpy`, li
 2. `np.linspace(a, b)` restituisce un vettore di numeri equispaziati nell'intervallo $[a, b]$. Di default, il vettore contiene $50$ numeri. Questo numbero può essere cambiato passando un terzo argomento alla funzione. Ad esempio, per generare 100 numeri equispaziati nell'intervallo $[0, 10]$ è sufficiente eseguire il comando `np.linspace(0, 10, 100)`.
 
 ## Graficare con Python: la libreria `matplotlib`
+
+La libreria `matplotlib` (solitamente importata con l'*alias* `plt`) permette di generare figure e grafici di varia natura. Noi utilizzeremo solo in parte le moltissime opzioni e funzionalità che possiede. In quel che segue considereremo `x` ed `y` come due array di `numpy` aventi la stessa lunghezza. La maggior parte degli script che utilizzano `matplotlib` sono composti (grossomodo) di tre parti, come descritto nelle prossime sezioni.
+
+###  *Setup* iniziale
+
+È conveniente cominciare con i comandi che controllano l'aspetto del grafico. Alcune funzioni utili sono:
+
+* `plt.title('titolo')` imposta il titolo della figura
+* `plt.xlabel('etichetta asse x')` e `plt.ylabel('etichetta asse y')` impostano le etichette (*label*) degli assi $x$ ed $y$
+* `plt.xlim(a, b)` e `plt.ylim(a, b)` impostano il *range* degli assi $x$ ed $y$
+
+### Aggiunta dei *dataset* 
+
+Si possono aggiungere curve e *dataset* al grafico utilizzando il comando `plt.plot(x, y)`, dove `x` ed `y` devono essere *array* della stessa lunghezza contenenti le ascisse e le ordinate dei dati che vogliamo graficare. Lo stesso comando può essere ripetuto più volte (con gli stessi o con altri *array*). Alcuni parametri opzionali di `plt.plot` permettono di controllare alcune proprietà del *dataset* da graficare. Ad esempio il parametro `label='nome dataset'` permette di impostare l'etichetta che apparirà in legenda, mentre `fmt='FORMATO'` permette di specificare il formato con cui la curva verrà visualizzata. Alcuni esempi sono `fmt='x'` per utilizzare delle croci, `fmt='o'` per dei cerchi, `fmt='-'` per una linea continua. Un elenco esaustivo delle opzioni possibili è consultabile all'indirizzo [https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.plot.html](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.plot.html).
+
+###Visualizzazione (e/o salvataggio su file)
+
+Una volta aggiunti tutti i *dataset* possiamo caricare la legenda col comando `plt.legend()` e mostrare la figura con `plt.show()`. Opzionalmente è anche possibile salvare la figura su *file* con il comando `plt.savefig('prova.png')` *prima* (o al posto di) chiamare `plt.show()`.
+
+Un semplice esempio completo è il seguente:
+
+```Python
+import numpy as np
+import pylab as plt
+
+# prepara due array di esempio
+x = [1, 2, 3, 4, 5]
+y = [1, 4, 9, 16, 25]
+
+# aggiungiamo titolo ed etichette agli assi
+plt.title("Prova grafico")
+plt.xlabel("Asse x")
+plt.ylabel("Asse y")
+
+# aggiungiamo il dataset
+plt.plot(x, y, label='prova dataset')
+# salviamo la figura nel file grafico.png
+plt.savefig('grafico.png')
+# mostriamo il grafico
+plt.show()
+```
 
 ## Link per approfondire
 

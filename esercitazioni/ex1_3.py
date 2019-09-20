@@ -10,10 +10,9 @@ x = np.linspace(-10.0, 50.0, 100)
 conv = 5.0/9.0
 offset = 32.0
 y = x/conv + offset
-plt.plot(x,y,label='retta interpolante')
+plt.plot(x, y, label='retta interpolante')
 x, y = np.loadtxt('temp.dat', unpack=True)
 plt.plot(x, y, 'x',label='Temperature caricate da file')
-plt.xlim(left=0)
-plt.xlim(right=50.0)
+plt.xlim(0, 50.0)
 plt.legend()
 plt.show()
