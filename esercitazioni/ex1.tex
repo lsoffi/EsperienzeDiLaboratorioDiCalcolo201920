@@ -63,15 +63,16 @@ dove $xx$ \`e il numero del gruppo a cui siete stati assegnati.
 \end{enumerate}
 \begin{lstlisting}[caption={Programma \texttt{temp.c}},language=c]
 #include <stdio.h>
-int main ()
+
+int main()
 {
   double tc, tf, conv, offset;
   conv = 5./9.;
   offset = 32.;
-  printf("Inserisci la tempeatura in gradi Celsius\n");
+  printf("Inserisci la temperatura in gradi Celsius \n");
   scanf("%lf", &tc);
   tf = tc/conv + offset;
-  printf("La temperatura in gradi Fahrenheit vale %5.2f gradi\n", tf);
+  printf("La temperatura in gradi Fahrenheit vale %5.2f gradi\n",tf);
 }
 \end{lstlisting}
 
@@ -82,7 +83,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 plt.title('Un primo plot con Python')
 x, y = np.loadtxt('temp.dat', unpack=True)
-plt.plot(x ,y, 'x', label='Loaded from file!')
+plt.plot(x ,y, 'x', label='Temperature caricate da file')
 plt.xlim((-10,50)) # intervallo lungo asse x
 plt.ylim((10,125)) # intervallo lungo asse y
 plt.show()
@@ -105,9 +106,9 @@ plt.show()
 \end{lstlisting}
 \item Aggiungere le legende all'asse $x$ e $y$ aggiungendo prima di \texttt{plt.show()} i comandi:
 \\
-\texttt{plt.xlabel('Tc')};
+\texttt{plt.xlabel('Tc')}
 \\
-\texttt{plt.ylabel('Tf')}.
+\texttt{plt.ylabel('Tf')}
          % {\em Ogni volta che si d\`a un nuovo comando a gnuplot bisogna ricordarsi di fare il refresh dello schermo con il comando \texttt{replot}.}
  \item Eseguire 
  \end{enumerate}
@@ -118,27 +119,18 @@ plt.show()
 %
 Con {\it Python\/} e le librerie {\it matplotlib\/} \`e possibile graficare non solo dati contenuti in un file esterno, ma anche funzioni definite dall'utente. Per esempio, 
 per plottare la funzione $y=x$ \`e sufficiente aggiungere prima di \texttt{plt.title}: 
-\begin{lstlisting}[language=c]
-    x=np.linspace(-10, 50, 100)
-    y=x
-    plt.plot(x, y, label='retta y=x')
+\begin{lstlisting}[language=python]
+x = np.linspace(-10, 50, 100)
+y = x
+plt.plot(x, y, label='retta y=x')
 \end{lstlisting}
-In questo modo viene aggiunto il plot della retta \texttt{y=x} nell'intervallo \texttt{[-10,50]}. 
-%i dati presenti sullo schermo e viene disegnata la funzione $y=x$ in un intervallo arbitrario. Per sovrapporre una funzione a dei dati, si utilizza il comando {\em replot}.
-
-%\begin{mdframed}[backgroundcolor=gray!10]
-%  \begin{verbatim}
-%    plot "temp.dat" with points
-%    f(x)=x
-%    replot f(x)
-%\end{verbatim}
-%\end{mdframed}
+In questo modo viene aggiunto il plot della retta $y=x$ nell'intervallo $[-10,50]$. 
 
 \begin{enumerate}
   \item Utilizzando le funzionalit\`a in {\it python\/} appena descritte, disegnare la retta che interpola i dati generati dal programma \texttt{temp.x}.
 \item 
 %Utilizzando l'{\em help} di {\em gnuplot}, che si invoca con il comando \texttt{help},
-Inserire una legenda nel grafico per la retta interpolante aggiungendo nel programma \texttt{python} prima di 
+Inserire una legenda nel grafico per la retta interpolante aggiungendo nel programma \textit{python} prima di 
 \lstinline[language=python]!plt.show()! 
 il comando \lstinline[language=python]!plt.legend()! e riscalare gli assi $x$ e $y$ in modo che vadano dalla pi\`u piccola alla pi\`u grande delle temperature scelte. 
 \end{enumerate}  
