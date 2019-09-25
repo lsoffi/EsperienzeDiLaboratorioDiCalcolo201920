@@ -68,3 +68,6 @@ __pycache__/
 **/*_latexmk
 **/*.fls
 **/*.latexmain
+*.zip
+*.tar.gz
+*.tgz
