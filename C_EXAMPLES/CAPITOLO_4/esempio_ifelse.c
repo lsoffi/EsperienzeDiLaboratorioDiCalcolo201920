@@ -1,29 +1,32 @@
-#include <stdio.h>
-
-int main(int argc, char** argv) 
+#include<stdio.h>
+int main(int argc, char** argv)
 {
-  double tIn, tOut, offset, conv;
-  int option = 0;
+  int a; 
+  
+  printf("Immetti un intero a\n");
+  scanf("%d", &a);
+  /* es. 1 */
+  if (a > 0)
+    printf("a è maggiore di 0!\n");
 
-  offset = 32.;
-  printf("Premi\n'1' per trasformare da F a C\n"
-         "'2' per trasformare da C a F\n\nScelta:");
-  scanf("%d", &option);
-  if (option == 1) 
+  /* es. 2 */
+  if (a < 0)
+    printf("a è negativo!\n");
+  else
+    printf("a è positivo o 0!\n");
+
+  /* es. 3 */
+  if (a==1) 
+    /* attenzione a non usare '=' ossia scrivere 
+     * if (a=1) ... è un errore molto frequente!
+     */
     {
-      conv = 5./ 9.;
-      printf("Valore in gradi Fahrenheit= ");
-      scanf("%lf",&tIn);
-      tOut = (tIn - offset) * conv;
-      printf("Valore in gradi Celsius= %f\n",tOut);
+      printf("a è proprio 1!\n");
     }
   else
     {
-      conv = 9./ 5.;
-      printf("Valore in gradi Celsius= ");
-      scanf("%lf", &tIn);
-      tOut = tIn * conv + offset;
-      printf("Valore in gradi Fahrenheit= %f\n",tOut);
+      printf("a non è 1\n"); 
     }
+
   return 0;
 }
