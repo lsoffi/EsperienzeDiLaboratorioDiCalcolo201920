@@ -2,7 +2,7 @@
 int main(int argc, char** argv)
 {
   int a; 
-  
+  char c; 
   printf("Immetti un intero a\n");
   scanf("%d", &a);
   /* es. 1 */
@@ -27,6 +27,16 @@ int main(int argc, char** argv)
     {
       printf("a non è 1\n"); 
     }
+
+  /* operatore ternario ? */
+  printf("a è %s\n", (a > 0) ? "positivo" : "negativo" );
+  c = (a > 0) ? 'p' : 'n';
+  printf("c = '%c'\n", c);   
+  /* (condizione) ? <espressioneA se condizione vera> : <espressioneB se condizione falsa> 
+   * espressioneA o espressioneB a seconda della condizione vengono valutate 
+   * ed il risultato della valutazione viene restituito dall'operatore.
+   * Nei due esempi viene restituita una stringa o un carattere a seconda della condizione.  
+   */
 
   return 0;
 }
