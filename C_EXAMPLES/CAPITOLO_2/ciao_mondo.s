@@ -37,12 +37,12 @@ _main:
         #
         # mov $label, reg:      copia l'indirizzo della variabile 'label' in 'reg'
         #
-        # leaq label, reg:      copia l'indirizzo di label nel registro reg
+        # leaq label, reg:      copia l'indirizzo di 'label' nel registro 'reg'
         #
         movl    $write_syscall, %eax    # chiamata di sistema 0x20000004 ($1 in linux) ovvero scrivi su schermo
         movl    $1, %edi                # 1 è standard out (stdout)
         leaq    message(%rip), %rsi     # metto nel registro %rsi l'indirizzo della stringa da stampare
-        movq    $len, %rdx              # metto in %rdx il numero di bytes da stampare (lungh. stringa + 1), len è una costante!
+        movq    $len, %rdx              # metto in %rdx il numero di bytes da stampare (lungh. stringa + 1), 'len' è una costante!
         syscall                         # effettua la chiamata di sistema
 
         # exit(0)
