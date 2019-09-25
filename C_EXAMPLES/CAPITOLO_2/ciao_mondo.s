@@ -28,7 +28,10 @@ message:
 
 _main:
         # write(1, message, len)
-        movl    write_syscall, %eax        # chiamata di sistema 0x20000004 ($1 in linux) ovvero scrivi su schermo
+        # mov -> 16 bit; movl -> 32 bit; movq -> 64 bit
+        # mov addr, reg: copia il valore corrispondente all'indirizzo addr nel registro reg
+        # leaq addr, reg: copia l'indirizzo addr nel registro reg
+        movl    write_syscall, %eax     # chiamata di sistema 0x20000004 ($1 in linux) ovvero scrivi su schermo
         movl    $1, %edi                # 1 è standard out (stdout)
         leaq    message(%rip), %rsi     # metto nel registro %rsi l'indirizzo della stringa da stampare
         movq    $len, %rdx              # metto in %rdx il numero di bytes da stampare (lungh. stringa + 1)
