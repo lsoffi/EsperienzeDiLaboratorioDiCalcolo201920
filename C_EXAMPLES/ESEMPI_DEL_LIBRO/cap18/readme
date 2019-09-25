@@ -1,0 +1,14 @@
+Per compilare i programmi
+
+gradient.c
+conjugateGradient.c
+
+occorre scrivere i comandi
+
+gcc -I. -o gradient.exe gradient.c minimizationLib.c
+gcc -I. -o conjugateGradient.exe conjugateGradient.c minimizationLib.c
+
+I due programmin, infatti, usano il file minimizationLib.c in cui sono
+definite alcune funzioni comuni. I prototipi delle funzioni sono dichiarati
+in minimizationLib.h, incluso da entrambi i file.
+
