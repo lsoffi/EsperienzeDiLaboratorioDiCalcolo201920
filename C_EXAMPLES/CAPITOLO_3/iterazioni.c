@@ -30,5 +30,31 @@ int main(int argc, char**argv)
     {
       printf("i=%d\n", i);
     }
+
+  //uso di break (si può usare in tutti i costrutti per iterazioni)
+  // while () ....
+  printf("\nbreak in ciclo while () ....\n");
+  i=0;
+  while (1)
+    {
+      printf("i=%d\n", i);
+      i++;
+      if (i == 3)
+        break;
+    }
+
+  // uso di continue
+  printf("\ncontinue in ciclo while () ....\n");
+  i=0;
+  while (i < 3)
+    {
+      if (i==1)
+        {
+          i++;
+          continue;
+        }
+      printf("i=%d\n", i);
+      i++;
+    }
   return 0;
 }
