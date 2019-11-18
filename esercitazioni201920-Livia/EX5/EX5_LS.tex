@@ -1,0 +1,148 @@
+%! TEX program = luatex
+\documentclass[12pt]{article}
+\usepackage{textcomp}
+\usepackage{graphicx,wasysym, mdframed,xcolor,gensymb,verbatim}
+\usepackage{color}
+\usepackage{floatflt}
+
+\usepackage[italian]{babel}
+%\input{listings_styles.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{bm}
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},   commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+\lstset{style=mystyle}
+%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\voto}[1]{[\textbf{#1} punti]}
+\def\cmu{\mbox{cm$^{-1}$}}
+\def\half{\frac{1}{2}}
+
+\voffset -2cm
+\hoffset -2.5cm
+%\marginparwidth 0cm
+\textheight 22cm
+\textwidth 18cm
+%\oddsidemargin  0.2cm                                                                                         
+%\evensidemargin 0.4cm                                                                                         
+\parindent=0pt
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+{\Large \bf  Laboratorio di Calcolo per Fisici, Quinta esercitazione\\[2mm]}
+{\large Canale D-K, Docente: Livia Soffi, \\Esercitatori: Prof. S. Rahatlou e Prof. R. Faccini}
+\end{center}
+\vspace{4mm}
+
+\colorbox{yellow}{\begin{minipage}{17cm}
+  Lo scopo della quinta esercitazione di laboratorio \`e di analizzare dei dati numerici tramite utilizzo di I/O da file e manipolazione di array.
+\end{minipage}}
+\vspace{2mm}
+%\vspace{1mm}
+%
+%
+
+\hrule
+\vspace{2mm}
+\textbf{\emph{Prima parte:}}
+
+Nel corso dell'esame di Meccanica per fisici nel 2019, gli studenti hanno sostenuto due esoneri (scritti parziali). Coloro che hanno ottenuto una media agli esoneri maggiore di 18 hanno potuto sostenere direttamente l'orale presentandosi con un voto di partenza pari alla media dei due esoneri. Se l'orale \`e buono il voto di partenza viene alzato altimenti viene abbassato nei limiti della sufficienza (18). Nella figura seguente sono riportati i voti ottenuti dagli studenti (ogni riga uno studente), nel seguente formato: indice studente, voto esonero 1, voto esonero 2, voto finale (dopo aver sostenuto l'orale). Voto finale uguale a 0 significa che lo studente non ha superato l'esame.
+
+\begin{center}
+    \includegraphics[scale=0.6]{voti.png}
+\end{center}
+
+
+Scrivere i valori precedenti, nello stesso formato su un file di testo chiamato \textbf{\emph{voti.txt}}.
+
+Scrivere un programma chiamato \textbf{\emph{meccanica.c}} che sappia:
+\begin{itemize}
+\item stampare su schermo un messaggio di benvenuto che spieghi cosa faccia il programma (max 1 riga)
+\item leggere dal file \textbf{\emph{voti.txt}} i valori precedenti e riempire con essi tre array chiamati: \emph{voto1, voto2, votoFinale}.
+\item calcolare per ogni studente la media dei due esoneri e riempire un quarto array chiamato \emph{media}. 
+
+\item contare:
+\begin{itemize}
+\item  quanti studenti hanno ottenuto una media agli esoneri superiore o uguale a 26, quanti una media compresa tra 22 (incluso) e 26 e quanti tra 18 (incluso) e 22. 
+\item  quanti studenti hanno sostenuto un  orale non buono.
+\item  quanti studenti non hanno superato l'esame.
+
+\end{itemize}
+Stampare i valori su schermo con un messaggio esplicativo
+
+
+\item stampare su un nuovo file chiamato \textbf{\emph{medie.txt}} i seguenti valori: indice studente, media, voto finale.
+
+\item ordinare l'array dei voti finali dal voto pi\`u alto al voto pi\`u basso utilizzando l'algoritmo bubblesort
+\item stampare su schermo l'elenco ordinato di voti cos\`i ottenuto, una riga per ciascun voto
+
+\end{itemize}
+
+
+
+\colorbox{yellow}{\begin{minipage}{17cm}
+NB. Si ricorda che per compilare ed eseguire il programma in C si deve digitare sul terminale:\\
+\textbf{gcc meccanica.c -o meccanica.x -lm -Wall \\
+  ./meccanica.x}\\
+\\
+I/O da file: \\
+FILE *fp; /*dichiarare il puntatore*/ \\
+fp = fopen(''nomeFile.txt'',''r''); /*aprire il file: ''r'' lettura, ''w'' scrittura */ \\
+fclose(fp);  /*chiudere il file*/ \\
+
+\end{minipage}}
+
+\vspace{2mm}
+\hrule
+\vspace{2mm}
+\textbf{\emph{Seconda  parte:}}
+
+Scrivere un programma \textbf{\emph{classifica.c}} che sappia: 
+\begin{itemize}
+\item leggere il file di testo \textbf{\emph{medie.txt}} e riempire un array bidimensionale \emph{sortVoti[24][2]} che contenga in una componente l'indice studente e nell'altra il voto finale. 
+\item applicare l'algoritmo bubblesort all'array bidimensionale e ordinare di nuovo i voti finali mantenendo anche l'informazione dello studente a cui ciascun voto corrisponde.
+\item stampare su schermo l'elenco ordinato ottenuto, una riga per ciascun studente.
+
+\end{itemize}
+\vspace{2mm}
+
+
+\colorbox{yellow}{\begin{minipage}{17cm}
+
+Si noti che nel caso di array bidimensionale, l'ordinamento delle righe si effettua in base ai valori di una delle due componenti di ciascuna riga (nel nostro caso ordnare gli studenti in base a sortVoti[i][1] corrispondente al voto finale). Tuttavia \`e importante conservare l'associazione voto-indice studente. Pertanto \textbf{se nel bubblesort si inverte l'ordine di sortVoti[i][1] e sortVoti[i+1][1], devono essere invertiti anche sortVoti[i][0] e sortVoti[i+1][0]}.
+
+
+	    
+\end{minipage}}
+
+\end{document}
+

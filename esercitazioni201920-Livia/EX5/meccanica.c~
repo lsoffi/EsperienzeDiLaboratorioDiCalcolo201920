@@ -1,0 +1,117 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#define NC 24 
+
+int main()
+{
+  int i,j,dumb,voto1[NC],voto2[NC],votoFinale[NC],indice[NC];
+  double media[NC],sortmedia[NC][2],temp1,temp2;
+  FILE *fpr, *fout;
+
+  for (i=0; i < NC; i++)
+    {
+      indice[i] = 0.0;
+      media[i] = 0.0;
+      voto1[i] = 0.0;
+      voto2[i] = 0.0;
+      votoFinale[i] = 0.0;
+      sortmedia[0][i] = sortmedia[1][i] = 0.0;
+    }
+
+  fpr=fopen("voti.txt","r");
+
+  for (i=0;i<NC;i++)
+    {
+      fscanf(fpr,"%d %d %d %d",&dumb,&voto1[i],&voto2[i], &votoFinale[i]);
+      media[i]=(double)(voto1[i]+voto2[i])/2.;
+      //      printf("%d %d %d %f %d\n",dumb, voto1[i],voto2[i],media[i],votoFinale[i]);
+      //      sortmedia[i][1]=media[i];
+      //sortmedia[i][0]=(double)(i+1); // voglio che i commessi vadano da 1 a 10 quindi sommo 1       
+    }  
+
+  int votiAlti = 0;
+  int votiMedi = 0;
+  int votiBassi = 0;
+  int votiInsuff = 0;
+  int bocciati =0;
+  int oraleBuono=0;
+  
+  for (i=0;i<NC;i++){
+    if (media[i]>=26.) votiAlti++;
+    if (media[i]>=22. && media[i]<26.) votiMedi++;
+    if (media[i]>=18. && media[i]<22.) votiBassi++;
+    if (media[i]<18.){
+      //      printf("%d %f\n", i, media[i]);
+      votiInsuff++;
+    }
+    if(votoFinale[i]>media[i])oraleBuono++;
+    if(votoFinale[i]==0)bocciati++;
+  }
+
+  printf("Voti alti %d, Voti medi %d, Voti bassi %d, Voti Insufficienti %d \n", votiAlti,votiMedi,votiBassi,votiInsuff);
+  printf("Orale Buono %d, Bocciati %d\n", oraleBuono, bocciati);
+
+  //  fclose(fpr);
+  fout=fopen("medie.txt","w");
+  for (i=0;i<NC;i++) fprintf(fout, "%d %f %d \n", i,media[i],votoFinale[i]);
+  fclose(fout);
+  // Ordino i commessi in ordine di produttivita' 
+
+  printf("ordino\n");
+  // BUBBLE SORT...
+  
+  int n1=0;  //Contatore 1
+  int n2=0;  //Contatore 2
+  int temp=0;  //Variabile di supporto
+  
+  for(n1=0; n1<NC; n1++){
+    for(n2=0; n2<NC-n1-1; n2++){
+      if(votoFinale[n2]<votoFinale[n2+1]){  //Scambio valori
+                temp=votoFinale[n2];
+                votoFinale[n2]=votoFinale[n2+1];
+                votoFinale[n2+1] = temp;
+      }
+    }
+  }
+
+  for (i=0;i<NC;i++) printf("%d\n", votoFinale[i]);
+	/*
+  for (i=0;i<NC-1;i++) // mi fermo a NC-2 poiché j parte da NC - 1 quindi se i=NC-1 il ciclo in j
+                       // non verrebbe effettuato
+    {
+      for (j=NC-1; j > 0; j--)//j=NC-1 è l'elemento più in "basso" 0 quello più in "alto"
+	// arrivo fino a i, infatti 
+	// 1) dopo il primo ciclo in 0 ho sicuramente l'elemento 
+       	//    più grande quindi è inutile fari confronti con l'elemento in 0
+       	// 2) dopo il secondo ciclo in 0 e 1 ho i due elementi più grandi 
+       	//    e quindi è inutile confrontarsi con loro
+	{
+	  if(sortmedia[j][1]>=sortmedia[j-1][1])
+	    {
+	      temp1=sortmedia[j-1][0];
+	      temp2=sortmedia[j-1][1];
+	      sortmedia[j-1][0]=sortmedia[j][0];
+	      sortmedia[j-1][1]=sortmedia[j][1];
+	      sortmedia[j][0]=temp1;
+	      sortmedia[j][1]=temp2;
+	    }
+	}
+    }
+
+  for (i=0;i<NC;i++)
+    {
+      temp1=sortmedia[i][0];
+      j=(int)(temp1-1); // i commessi vanno da 1 a 10 quindi devo sottrarre 1
+      voto[j]=NC-i;
+    }
+
+  // stampo i commessi con i voti
+  for (j=0;j<NC;j++)
+    {
+      printf("commesso n. %f Media= %f\n",sortmedia[j][0],sortmedia[j][1]);
+      //printf("commesso n. %3i Ore %3i Vendite %5i Media= %7.2f voto= %3i\n",j+1,ore[j],vendite[j],media[j],voto[j]);
+    }
+*/
+    return 0;
+}
